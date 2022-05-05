@@ -26,6 +26,16 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<GreekDeity> GreekDeities { get; set; }
+
+        public DbSet<Sculpture> Sculptures { get; set; }
+
+        public DbSet<SculptureMaterial> SculptureMaterials { get; set; }
+
+        public DbSet<HomeDecor> HomeDecors { get; set; }
+
+        public DbSet<HomeDecorMaterial> HomeDecorMaterials { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
