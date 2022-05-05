@@ -6,11 +6,13 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using TheAncientMerch.Data.Common.Models;
-    using TheAncientMerch.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
     using Microsoft.EntityFrameworkCore;
+
+    using TheAncientMerch.Data.Common.Models;
+
+    using TheAncientMerch.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -35,6 +37,16 @@
         public DbSet<HomeDecor> HomeDecors { get; set; }
 
         public DbSet<HomeDecorMaterial> HomeDecorMaterials { get; set; }
+
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<ArticleCategory> ArticleCategories { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<ForumCategory> ForumCategories { get; set; }
+
+        public DbSet<Post> Posts { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
