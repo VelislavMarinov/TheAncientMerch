@@ -10,7 +10,7 @@
 
     using TheAncientMerch.Data.Models;
 
-    internal class SculptureMatirialSeeder : ISeeder
+    internal class SculptureMaterialSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
