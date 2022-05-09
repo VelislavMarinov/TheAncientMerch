@@ -1,0 +1,23 @@
+﻿@using TheAncientMerch.Web.ViewModels.GreekDeitys
+@model IEnumerable<TitanViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1 class="text-center">All Titans</h1>
+
+
+
+<div class="card-deck row row-cols-1 row-cols-md-6">
+    @foreach(var god in Model)
+    {
+     <div class="col mb-4" style="width: 18rem;" > 
+      <div class="card media flex-wrap w-100 align-items-center">
+       <img src="@god.ImageUrl" class="card-img-top" alt="..." >
+      <div class="card-body">
+       <h5 class="card-title">@god.Name</h5>
+      </div>
+     </div>
+    </div>
+    }
+</div>
