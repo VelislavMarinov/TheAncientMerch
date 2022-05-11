@@ -1,0 +1,54 @@
+﻿@using TheAncientMerch.Web.ViewModels.Sculptures
+@model IEnumerable<SculptureViewModel>
+
+<form method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <div class="form-group">
+                <label>Type of Sculpture</label>
+                <select class="form-control">
+                    <option value="">All</option>
+                    <option>Small</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Sort by Material</label>
+            <select class="form-control">
+                    <option value="0" selected>Date Created</option>
+                    <option value="1">Year</option>
+                    <option value="2">Brand And Model</option>
+                </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <div class="form-group">
+                <label>Sort by Color</label>
+                <select class="form-control">
+                    <option value="0" selected>Date Created</option>
+                    <option value="1">Year</option>
+                    <option value="2">Brand And Model</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    @foreach(var sculpture in Model)
+    {   
+     <div class="col-md-3">
+            <div class="card mb-3">
+                <img class="card-img-top" src="@sculpture.ImageUrl" alt="" width ="150" height = "350">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@sculpture.Name</h5>
+                    <a asp-controller="Sculptures" asp-action="Sculpture" asp-route-id="@sculpture.Id"  class="btn btn-primary">View</a>
+                        <a  class="btn btn-warning">Edit</a>
+                        <a  class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

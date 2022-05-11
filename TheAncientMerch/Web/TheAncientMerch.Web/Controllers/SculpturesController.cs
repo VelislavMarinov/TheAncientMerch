@@ -43,5 +43,19 @@
             // TODo Redirect to recipi info page.
             return this.Redirect("/");
         }
+
+        public IActionResult All()
+        {
+            var sculptures = this.SculptureService.GetAllSculptures();
+
+            return this.View(sculptures);
+        }
+
+        public IActionResult Sculpture(int id)
+        {
+            var sculpture = this.SculptureService.GetSculptureById(id);
+
+            return this.View(sculpture);
+        }
     }
 }
