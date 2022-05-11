@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class GodViewModel
+    public class DeityViewModel
     {
         public int Id { get; set; }
 

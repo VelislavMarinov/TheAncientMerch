@@ -1,12 +1,16 @@
 ﻿namespace TheAncientMerch.Services.Data.GreekDeity
 {
     using System.Collections.Generic;
+
     using TheAncientMerch.Web.ViewModels.GreekDeitys;
 
-    public interface IGreekDeityService 
+    public interface IGreekDeityService
     {
-        IEnumerable<GodViewModel> GetAllGods();
+        IEnumerable<DeityViewModel> GetAllGods();
 
-        IEnumerable<TitanViewModel> GetAllTitans();
+        IEnumerable<DeityViewModel> GetAllTitans();
+
+        DeityViewModel GetDeity(int id);
+
     }
 }

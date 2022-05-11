@@ -1,0 +1,32 @@
+﻿@using TheAncientMerch.Web.ViewModels.GreekDeitys
+@model IEnumerable<DeityViewModel>
+@{
+    ViewData["Title"] = "Gods";
+}
+
+<h1 class="text-center">All gods</h1>
+
+
+
+<div class="row row-cols-1 row-cols-md-6">
+    @foreach(var deity in Model)
+    {
+        <a asp-controller="Deities" asp-action="Deity" asp-route-id="@deity.Id" >
+          <div class="col mb-4" style="width: 18rem;" > 
+           <div class="card media flex-wrap w-100 align-items-center">
+            <img src="@deity.ImageUrl" width ="200" height = "250" class="card-img-top" alt="...">
+           <div class="card-body">
+            <h5 class="card-title">@deity.Name</h5>
+           </div>
+          </div>
+         </div>
+        </a>
+        
+    }
+</div>
+  
+  
+  
+  
+
+

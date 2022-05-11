@@ -21,10 +21,12 @@
 
         public IRepository<GreekDeity> GreekDeityRepository { get; }
 
-        public IEnumerable<GodViewModel> GetAllGods()
+        public IEnumerable<DeityViewModel> GetAllGods()
         {
-            var gods = this.GreekDeityRepository.All().Where(x => x.Type == DeityType.God)
-                .Select(x => new GodViewModel
+            var gods = this.GreekDeityRepository
+                .All()
+                .Where(x => x.Type == DeityType.God)
+                .Select(x => new DeityViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
@@ -36,10 +38,12 @@
             return gods;
         }
 
-        public IEnumerable<TitanViewModel> GetAllTitans()
+        public IEnumerable<DeityViewModel> GetAllTitans()
         {
-            var titans = this.GreekDeityRepository.All().Where(x => x.Type == DeityType.Titan)
-               .Select(x => new TitanViewModel
+            var titans = this.GreekDeityRepository
+                .All()
+                .Where(x => x.Type == DeityType.Titan)
+               .Select(x => new DeityViewModel
                {
                    Id = x.Id,
                    Name = x.Name,
@@ -49,6 +53,24 @@
                });
 
             return titans;
+        }
+
+        public DeityViewModel GetDeity(int id)
+        {
+            var deity = this.GreekDeityRepository
+                .All()
+                .Where(x => x.Id == id)
+                .Select(x => new DeityViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    ImageUrl = x.ImageUrl,
+                    VideoUrl = x.VideoUrl,
+                })
+                .FirstOrDefault();
+
+            return deity;
         }
     }
 }
