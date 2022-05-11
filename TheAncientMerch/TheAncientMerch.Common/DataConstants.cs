@@ -38,7 +38,9 @@
         public const int PostContentMaxLength = 4094;
 
         // Sculpture
+        public const int SculptureNameMinLegth = 4;
         public const int SculptureNameMaxLegth = 100;
+        public const int SculptureDescriptionMinLength = 20;
         public const int SculptureDescriptionMaxLength = 10000;
     }
 }

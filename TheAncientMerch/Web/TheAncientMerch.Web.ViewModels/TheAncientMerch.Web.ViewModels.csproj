@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\TheAncientMerch.Data.Common\TheAncientMerch.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\TheAncientMerch.Data.Models\TheAncientMerch.Data.Models.csproj" />
     <ProjectReference Include="..\..\Services\TheAncientMerch.Services.Mapping\TheAncientMerch.Services.Mapping.csproj" />
   </ItemGroup>

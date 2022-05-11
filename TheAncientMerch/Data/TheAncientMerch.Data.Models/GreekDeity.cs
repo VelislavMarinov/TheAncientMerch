@@ -10,11 +10,6 @@
 
     public class GreekDeity : BaseModel<int>
     {
-        public GreekDeity()
-        {
-            this.Sculptures = new HashSet<Sculpture>();
-        }
-
         [Required]
         [MaxLength(GreekDeityNameMaxLength)]
         public string Name { get; set; }
@@ -32,7 +27,5 @@
         public string VideoUrl { get; set; }
 
         public DeityType Type { get; set; }
-
-        public ICollection<Sculpture> Sculptures { get; set; }
     }
 }

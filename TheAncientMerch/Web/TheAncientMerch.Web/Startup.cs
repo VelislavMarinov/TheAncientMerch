@@ -22,6 +22,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using TheAncientMerch.Services.Data.GreekDeity;
+    using TheAncientMerch.Services.Data.SculptureMaterial;
+    using TheAncientMerch.Services.Data.Sculpture;
 
     public class Startup
     {
@@ -67,6 +69,8 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IGreekDeityService, GreekDeityService>();
+            services.AddTransient<ISculptureMaterialService, SculptureMaterialService>();
+            services.AddTransient<ISculptureService, SculptureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
