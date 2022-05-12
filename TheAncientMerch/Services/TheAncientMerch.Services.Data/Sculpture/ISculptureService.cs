@@ -10,19 +10,13 @@
     {
         Task Create(CreateSculptureInputModel createSculptureInputModel);
 
-        IEnumerable<SculptureViewModel> GetAllSculptures();
-
-        IEnumerable<SculptureViewModel> GetSculpturesByColor();
-
-        IEnumerable<SculptureViewModel> GetSculpturesByType();
-
-        IEnumerable<SculptureViewModel> GetSculpturesByMaterial();
-
-        IEnumerable<SculptureViewModel> GetSculpturesBySize();
+        IEnumerable<SculptureViewModel> GetAllSculptures(int id, int itemsPerPage);
 
         IEnumerable<SculptureViewModel> GetAllUserSculptures();
 
-        void DeleteSculpture(string userId);
+        int GetCount();
+
+        void DeleteSculpture(string userId, int sculptureId);
 
         SculptureViewModel GetSculptureById(int id);
     }

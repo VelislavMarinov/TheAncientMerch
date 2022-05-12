@@ -42,15 +42,18 @@
             await this.SculptureRepository.SaveChangesAsync();
         }
 
-        public void DeleteSculpture(string userId)
+        public void DeleteSculpture(string userId,int sculptureId)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<SculptureViewModel> GetAllSculptures()
+        public IEnumerable<SculptureViewModel> GetAllSculptures(int currentPage, int itemsPerPage)
         {
             var sculptures = this.SculptureRepository
                 .All()
+                .OrderByDescending(x => x.Id)
+                .Skip((currentPage - 1) * itemsPerPage)
+                .Take(itemsPerPage)
                 .Select(x => new SculptureViewModel
                 {
                     Id = x.Id,
@@ -73,6 +76,12 @@
         public IEnumerable<SculptureViewModel> GetAllUserSculptures()
         {
             throw new System.NotImplementedException();
+        }
+
+        public int GetCount()
+        {
+            var count = this.SculptureRepository.All().Count();
+            return count;
         }
 
         public SculptureViewModel GetSculptureById(int id)
@@ -100,24 +109,6 @@
             return sculpture;
         }
 
-        public IEnumerable<SculptureViewModel> GetSculpturesByColor()
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public IEnumerable<SculptureViewModel> GetSculpturesByMaterial()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<SculptureViewModel> GetSculpturesBySize()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<SculptureViewModel> GetSculpturesByType()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

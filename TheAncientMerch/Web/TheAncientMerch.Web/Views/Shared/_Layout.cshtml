@@ -10,35 +10,44 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-lg-inline-flex flex-lg-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sculptures" asp-action="Create">Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sculptures" asp-action="All">Sculptures</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Deities" asp-action="Gods">Gods</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Deities" asp-action="Titans">Titans</a>
-                        </li>
-                    </ul>
+                    <div class="navbar-nav flex-grow-1">
+                        <div class="dropdown">
+                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                Home
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                Deities
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Gods">Gods</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Titans">Titans</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                Sculptures
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" asp-area="" asp-controller="Sculptures" asp-action="All">All</a>
+                                <a class="dropdown-item " asp-area="" asp-controller="Sculptures" asp-action="Create">Create</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

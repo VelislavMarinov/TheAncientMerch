@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using TheAncientMerch.Services.Data.Sculpture;
     using TheAncientMerch.Services.Data.SculptureMaterial;
+    using TheAncientMerch.Web.ViewModels.GreekDeitys;
     using TheAncientMerch.Web.ViewModels.Sculptures;
 
     public class SculpturesController : Controller
@@ -44,11 +45,18 @@
             return this.Redirect("/");
         }
 
-        public IActionResult All()
+        public IActionResult All(int id = 1)
         {
-            var sculptures = this.SculptureService.GetAllSculptures();
+            var itemsPerPage = 4;
+            var view = new AllSculpturesViewModel
+            {
+                PageNumber = id,
+                Sculptures = this.SculptureService.GetAllSculptures(id, itemsPerPage),
+                ItemsPerPage = itemsPerPage,
+                ItemsCount = this.SculptureService.GetCount(),
+            };
 
-            return this.View(sculptures);
+            return this.View(view);
         }
 
         public IActionResult Sculpture(int id)

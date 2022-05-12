@@ -1,5 +1,9 @@
-﻿@using TheAncientMerch.Web.ViewModels.Sculptures
-@model IEnumerable<SculptureViewModel>
+﻿@using TheAncientMerch.Web.ViewModels.GreekDeitys
+@model AllSculpturesViewModel
+
+@{
+    this.ViewData["Title"] = "All sculptures";
+}
 
 <form method="get">
     <div class="row">
@@ -9,7 +13,6 @@
                 <select class="form-control">
                     <option value="">All</option>
                     <option>Small</option>
-                    
                 </select>
             </div>
         </div>
@@ -20,9 +23,8 @@
                     <option value="0" selected>Date Created</option>
                     <option value="1">Year</option>
                     <option value="2">Brand And Model</option>
-                </select>
+            </select>
         </div>
-
         <div class="form-group col-md-4">
             <div class="form-group">
                 <label>Sort by Color</label>
@@ -37,11 +39,11 @@
 </form>
 
 <div class="row">
-    @foreach(var sculpture in Model)
+    @foreach(var sculpture in Model.Sculptures)
     {   
-     <div class="col-md-3">
+      <div class="col-md-3">
             <div class="card mb-3">
-                <img class="card-img-top" src="@sculpture.ImageUrl" alt="" width ="150" height = "350">
+                <img class="card-img-top" src="@sculpture.ImageUrl" alt="" width ="150" height = "250">
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">@sculpture.Name</h5>
                     <a asp-controller="Sculptures" asp-action="Sculpture" asp-route-id="@sculpture.Id"  class="btn btn-primary">View</a>
@@ -49,6 +51,9 @@
                         <a  class="btn btn-danger">Delete</a>
                 </div>
             </div>
-        </div>
+      </div>
     }
 </div>
+
+
+<partial name="_SculpturesPagingPartial" model="@Model" />
