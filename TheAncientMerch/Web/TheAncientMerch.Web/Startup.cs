@@ -24,6 +24,7 @@
     using TheAncientMerch.Services.Data.GreekDeity;
     using TheAncientMerch.Services.Data.SculptureMaterial;
     using TheAncientMerch.Services.Data.Sculpture;
+    using TheAncientMerch.Services.Data.Article;
 
     public class Startup
     {
@@ -71,6 +72,7 @@
             services.AddTransient<IGreekDeityService, GreekDeityService>();
             services.AddTransient<ISculptureMaterialService, SculptureMaterialService>();
             services.AddTransient<ISculptureService, SculptureService>();
+            services.AddTransient<IArticleService, ArticleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
