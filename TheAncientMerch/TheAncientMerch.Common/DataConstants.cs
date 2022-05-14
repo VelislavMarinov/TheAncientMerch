@@ -42,5 +42,10 @@
         public const int SculptureNameMaxLegth = 100;
         public const int SculptureDescriptionMinLength = 20;
         public const int SculptureDescriptionMaxLength = 10000;
+
+        // User: Username
+        public const int UserNameMinLength = 4;
+        public const int UserNameMaxLength = 20;
+
     }
 }

@@ -1,0 +1,36 @@
+﻿@using TheAncientMerch.Web.ViewModels.Articles
+@model IEnumerable<ArticlesCategoryViewModel>
+ 
+@{
+    this.ViewData["Title"] = "Article categories";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Articles/All">All articles</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="row">
+       @foreach(var category in Model)
+       {
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 p-1">
+            <a asp-controller="Articles" asp-action="Categories" asp-route-id = "@category.Name"  >
+                <div class="card border-dark">
+                    <div class="card-header col-md border text-center">
+                        <div class="media flex-wrap w-100 align-items-center">
+                            <img src="@category.ImageUrl" width="200" height = "300" class="card-img-top">
+                        </div>
+                    </div>
+                    <div class="card card-body text-center alert-secondary">
+                        <h5>@category.Name</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+       }
+     </div>
+</div>

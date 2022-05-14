@@ -3,10 +3,11 @@ namespace TheAncientMerch.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using TheAncientMerch.Data.Common.Models;
+    using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Identity;
+    using TheAncientMerch.Data.Common.Models;
+
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,6 +17,11 @@ namespace TheAncientMerch.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Articles = new HashSet<Article>();
+            this.Posts = new HashSet<Post>();
+            this.Sculptures = new HashSet<Sculpture>();
+            this.HomeDecors = new HashSet<HomeDecor>();
+            this.Comments = new HashSet<Comment>();
         }
 
         // Audit info
@@ -27,6 +33,16 @@ namespace TheAncientMerch.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Article> Articles { get; set; }
+
+        public virtual ICollection<Sculpture> Sculptures { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<HomeDecor> HomeDecors { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

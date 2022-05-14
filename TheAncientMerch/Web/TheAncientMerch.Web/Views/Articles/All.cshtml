@@ -1,0 +1,47 @@
+﻿@using TheAncientMerch.Web.ViewModels.Articles
+@{
+    this.ViewData["Title"] = "All Articles";
+}
+
+@model AllArticlesViewModel
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+
+<div>
+    <div class="row">
+        @foreach (var article in Model.Articles.OrderByDescending(x => x.CreatedOn))
+        {
+            <div class="text-center col-lg-4 col-xl-4 col-md-4 col-sm-12 col-12 mt-3" style="width: 18rem;">
+                <div class="card border-dark">
+                    <div class="card-header col-md border text-center">
+                        <a asp-action="Article" asp-route-id="@article.Id">
+                            <img src="@article.ImagePath" class="card-img-top">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> <a asp-action="Article" asp-route-id="@article.Id">@article.Title</a></h5>
+                        <p class="card-text text-justify">@article.ShortContent</p>
+                    </div>
+                    <div class="card-footer">
+                        Article category:
+                        <a asp-controller="Blogs" asp-action="@article.CategoryName">
+                            <p class="card-text"> @article.CategoryName</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<hr />
+
+<partial name="_ArticlesPagingPartial" model="@Model" />
