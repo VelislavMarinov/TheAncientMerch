@@ -16,14 +16,14 @@
 
 
 <div>
-    <div class="row">
+    <div class="row d-flex justify-content-center  row-cols-1 row-cols-md-4">
         @foreach (var article in Model.Articles.OrderByDescending(x => x.CreatedOn))
         {
-            <div class="text-center col-lg-4 col-xl-4 col-md-4 col-sm-12 col-12 mt-3" style="width: 18rem;">
+            <div class="text-center col mb-4  col-xl-4 col-5 mt-4" style="width: 18rem;">
                 <div class="card border-dark">
                     <div class="card-header col-md border text-center">
                         <a asp-action="Article" asp-route-id="@article.Id">
-                            <img src="@article.ImagePath" class="card-img-top">
+                            <img src="@article.ImageUrl" width="200" height="250"  class="card-img-top">
                         </a>
                     </div>
                     <div class="card-body">

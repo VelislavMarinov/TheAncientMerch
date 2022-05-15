@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using System.Linq;
+    using System.Threading.Tasks;
 
     using TheAncientMerch.Data.Common.Repositories;
 
@@ -12,7 +13,8 @@
 
     public class ArticleService : IArticleService
     {
-        public ArticleService(IDeletableEntityRepository<ArticleCategory> articleCategoryRepository,
+        public ArticleService(
+            IDeletableEntityRepository<ArticleCategory> articleCategoryRepository,
             IDeletableEntityRepository<Article> articleRepository)
         {
             this.ArticleCategoryRepository = articleCategoryRepository;
@@ -37,7 +39,7 @@
                  Content = x.Content,
                  CategoryId = x.CategoryId,
                  CategoryName = x.Category.Name,
-                 ImagePath = x.ImageUrl,
+                 ImageUrl = x.ImageUrl,
                  UserId = x.AddedByUserId,
                  CreatedOn = x.CreatedOn.ToString("f"),
                  Username = x.AddedByUser.UserName,
@@ -47,12 +49,13 @@
             return viewModel;
         }
 
-        public IEnumerable<ArticlesCategoryViewModel> GetAllCategories()
+        public IEnumerable<ArticleCategoryViewModel> GetAllCategories()
         {
             var categories = this.ArticleCategoryRepository
                 .All()
-                .Select(x => new ArticlesCategoryViewModel
+                .Select(x => new ArticleCategoryViewModel
                 {
+                    Id = x.Id,
                     Name = x.Name,
                     ImageUrl = x.ImageUrl,
                 });
@@ -67,6 +70,43 @@
                 .Count();
 
             return articlesCount;
+        }
+
+        public async Task CreateArticleAsync(CreateArticleInputModel model, string userId)
+        {
+            var article = new Article
+            {
+                Title = model.Title,
+                Content = model.Content,
+                CategoryId = model.CategoryId,
+                ImageUrl = model.ImageUrl,
+                AddedByUserId = userId,
+            };
+
+            await this.ArticleRepository.AddAsync(article);
+            await this.ArticleRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesById(int Id)
+        {
+            var articlesByCategory = this.ArticleRepository
+                .All()
+                .Where(x => x.CategoryId == Id)
+                .Select(x => new ArticleViewModel
+                {
+                    Id = x.Id,
+                    CategoryId = x.CategoryId,
+                    Title = x.Title,
+                    CategoryName = x.Category.Name,
+                    Content = x.Content,
+                    ImageUrl = x.ImageUrl,
+                    UserId = x.AddedByUserId,
+                    CreatedOn = x.CreatedOn.ToString("f"),
+                    Username = x.AddedByUser.UserName,
+                })
+                .ToList();
+
+            return articlesByCategory;
         }
     }
 }

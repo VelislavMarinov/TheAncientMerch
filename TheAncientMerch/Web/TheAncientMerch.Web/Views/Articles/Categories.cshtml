@@ -1,5 +1,5 @@
 ﻿@using TheAncientMerch.Web.ViewModels.Articles
-@model IEnumerable<ArticlesCategoryViewModel>
+@model IEnumerable<ArticleCategoryViewModel>
  
 @{
     this.ViewData["Title"] = "Article categories";
@@ -18,7 +18,7 @@
        @foreach(var category in Model)
        {
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 p-1">
-            <a asp-controller="Articles" asp-action="Categories" asp-route-id = "@category.Name"  >
+            <a asp-controller="Articles" asp-action="Categories" asp-route-id = "@String.Concat(category.Name.Where(c => !Char.IsWhiteSpace(c)))"  >
                 <div class="card border-dark">
                     <div class="card-header col-md border text-center">
                         <div class="media flex-wrap w-100 align-items-center">

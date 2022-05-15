@@ -1,0 +1,28 @@
+﻿@using TheAncientMerch.Web.ViewModels.Articles
+
+@model AllArticlesViewModel
+
+<div class="row">
+    @foreach (var article in Model.Articles.OrderByDescending(x => x.CreatedOn))
+    {
+        <div class="text-center col-lg-4 col-xl-4 col-md-4 col-sm-12 col-12 mt-3" style="width: 18rem;">
+            <div class="card border-dark">
+                <div class="card-header col-md border text-center">
+                    <a>
+                        <img src="@article.ImageUrl" class="card-img-top">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> <a >@article.Title</a></h5>
+                    <p class="card-text text-justify">@article.ShortContent</p>
+                </div>
+                <div class="card-footer">
+                    Article category:
+                    <a asp-controller="Articles" asp-action="Categories" asp-route-id="@article.CategoryName" >
+                        <p class="card-text"> @article.CategoryName</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

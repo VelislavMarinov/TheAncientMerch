@@ -1,19 +1,18 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
-    using Microsoft.AspNetCore.Hosting;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Mvc;
     using TheAncientMerch.Services.Data.Article;
     using TheAncientMerch.Web.ViewModels.Articles;
 
     public class ArticlesController : Controller
     {
-        private readonly IWebHostEnvironment Environment;
-
         public ArticlesController(
-            IArticleService articleService,
-            IWebHostEnvironment environment)
+            IArticleService articleService)
         {
-            this.Environment = environment;
             this.ArticleService = articleService;
         }
 
@@ -22,14 +21,33 @@
         [HttpGet]
         public IActionResult Categories(string id = "Categories")
         {
-            var view = this.ArticleService.GetAllCategories();
-            return this.View($"{id}", view);
+            id = id.ToLower();
+            var categories = this.ArticleService.GetAllCategories();
+
+            // for a spacific category.
+            foreach (var category in categories)
+            {
+               var categoryNameTrimed = string.Concat(category.Name.Where(c => !char.IsWhiteSpace(c))).ToLower();
+               if (id == categoryNameTrimed)
+               {
+                    var articlesByCategory = this.ArticleService.GetArticlesById(category.Id);
+                    var viewModel = new AllArticlesViewModel
+                    {
+                        Articles = this.ArticleService.GetArticlesById(category.Id),
+                        ItemsCount = this.ArticleService.ArticlesCount(),
+                    };
+                    return this.View($"{id}", viewModel);
+               }
+            }
+
+            // for all categories.
+            return this.View(categories);
         }
 
         [HttpGet]
         public IActionResult All(int id = 1)
         {
-            var itemsPerPage = 4;
+            var itemsPerPage = 3;
             var view = new AllArticlesViewModel
             {
                 PageNumber = id,
@@ -40,5 +58,37 @@
 
             return this.View(view);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var viewModel = new CreateArticleInputModel
+            {
+                Categories = this.ArticleService.GetAllCategories(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateArticleInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                model.Categories = this.ArticleService.GetAllCategories();
+
+                return this.View(model);
+            }
+
+            var userId = this.User.GetId();
+
+            await this.ArticleService.CreateArticleAsync(model, userId);
+
+            ArticlesController articlesController = this;
+            articlesController.TempData["Message"] = "Article created successfully.";
+
+            return this.RedirectToAction("All", "Articles");
+        }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace TheAncientMerch.Web.ViewModels.Articles
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TheAncientMerch.Web.ViewModels.Articles
 {
     public class ArticleViewModel
     {
@@ -10,7 +12,7 @@
 
         public string Title { get; set; }
 
-        public string ImagePath { get; set; }
+        public string ImageUrl { get; set; }
 
         public string Content { get; set; }
 

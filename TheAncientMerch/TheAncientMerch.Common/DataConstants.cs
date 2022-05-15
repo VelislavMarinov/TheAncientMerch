@@ -3,7 +3,9 @@
     public static class DataConstants
     {
         // Articles
+        public const int ArticleTitleMinLength = 4;
         public const int ArticleTitleMaxLength = 64;
+        public const int ArticleContentMinLength = 20;
         public const int ArticleContentMaxLength = 10000;
 
         // ArticlesCategory
