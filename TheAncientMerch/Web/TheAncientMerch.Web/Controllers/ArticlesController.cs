@@ -1,13 +1,14 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using TheAncientMerch.Services.Data.Article;
     using TheAncientMerch.Web.ViewModels.Articles;
 
+    [Authorize]
     public class ArticlesController : Controller
     {
         public ArticlesController(
@@ -30,10 +31,9 @@
                var categoryNameTrimed = string.Concat(category.Name.Where(c => !char.IsWhiteSpace(c))).ToLower();
                if (id == categoryNameTrimed)
                {
-                    var articlesByCategory = this.ArticleService.GetArticlesById(category.Id);
                     var viewModel = new AllArticlesViewModel
                     {
-                        Articles = this.ArticleService.GetArticlesById(category.Id),
+                        Articles = this.ArticleService.GetArticlesByCategoryId(category.Id),
                         ItemsCount = this.ArticleService.ArticlesCount(),
                     };
                     return this.View($"{id}", viewModel);
@@ -90,5 +90,52 @@
             return this.RedirectToAction("All", "Articles");
         }
 
+        [HttpGet]
+        public IActionResult Article(int id)
+        {
+            var article = this.ArticleService.GetArticleById(id);
+            return this.View(article);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await this.ArticleService.DeleteArticleAsync(id);
+            this.TempData["Message"] = "Article deleted successfully.";
+            return this.RedirectToAction("All", "Articles");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var viewModel = new EditArticleInputModel();
+            var currentArticle = this.ArticleService.GetArticleById(id);
+
+            viewModel.Title = currentArticle.Title;
+            viewModel.Content = currentArticle.Content;
+            viewModel.Categories = this.ArticleService.GetAllCategories();
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditAsync(int id, EditArticleInputModel model)
+        {
+            var userId = this.User.GetId();
+
+            if (!this.ModelState.IsValid)
+            {
+                model.Categories = this.ArticleService.GetAllCategories();
+
+                return this.View(model);
+            }
+
+            await this.ArticleService.EditArticleAsync(model, id, userId);
+
+            ArticlesController articlesController = this;
+            articlesController.TempData["Message"] = "Article updated successfully.";
+
+            return this.Redirect($"/Articles/Article/{id}");
+        }
     }
 }

@@ -1,0 +1,85 @@
+﻿@using TheAncientMerch.Web.ViewModels.Articles
+@model ArticleViewModel
+
+@{
+    this.ViewData["Title"] = Model.Title;
+    var userId = User.GetId();
+}
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Articles/All">All articles</a></li>
+        <li class="breadcrumb-item"><a href="/Articles/Categories">Article categories</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="card blogShort border">
+        <div class="card-header border">
+            <div class="row-md-4 mt-2">
+                <ul>
+                    <li>
+                        <strong>Written by: </strong>
+                        <a asp-area="" asp-controller="Profiles" asp-action="UsersProfile" asp-route-username="@Model.Username">@Model.Username</a>
+                    </li>
+                    <li><strong>Written on: </strong>@Model.CreatedOn</li>
+                    <li><strong>Category: </strong> <a asp-controller="Articles" asp-action="Categories" asp-route-id="@String.Concat(Model.CategoryName.Where(c => !Char.IsWhiteSpace(c)))">@Model.CategoryName </a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body col-md-12">
+            <div class="row-md-4 text-left mt-2 text-center">
+                <img src="@Model.ImageUrl" alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10" width="500">
+            </div>
+        </div>
+        <div class="card-footer border row-md-4 mt-2">
+            <article>
+                @Model.Content
+            </article>
+        </div>
+    </div>
+</div>
+
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>@this.TempData["Message"]</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (userId == Model.UserId || User.IsInRole("Administrator"))
+    {
+        <div class="text-center pt-2">
+            <div class="text-center">
+                <a asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Edit</a>
+            </div>
+            <div class="text-center pt-2">
+                <form method="post" asp-controller="Articles" asp-action="Delete" asp-route-id="@Model.Id" id="deleteForm"></form>
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            </div>
+        </div>
+    }
+
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you want to remove "@Model.Title" from your articles ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,9 +1,11 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     using TheAncientMerch.Services.Data.GreekDeity;
 
+    [Authorize]
     public class DeitiesController : Controller
     {
         public DeitiesController(IGreekDeityService greekDeityService)

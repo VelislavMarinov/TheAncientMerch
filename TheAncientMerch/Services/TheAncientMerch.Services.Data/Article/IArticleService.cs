@@ -8,7 +8,13 @@
     {
         IEnumerable<ArticleCategoryViewModel> GetAllCategories();
 
-        IEnumerable<ArticleViewModel> GetArticlesById(int Id);
+        Task EditArticleAsync(EditArticleInputModel model, int articleId, string userId);
+
+        Task DeleteArticleAsync(int id);
+
+        IEnumerable<ArticleViewModel> GetArticlesByCategoryId(int Id);
+
+        ArticleViewModel GetArticleById(int Id);
 
         IEnumerable<ArticleViewModel> GetAllArticles(int pageNumber, int itemsPerPage);
 

@@ -87,7 +87,7 @@
             await this.ArticleRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<ArticleViewModel> GetArticlesById(int Id)
+        public IEnumerable<ArticleViewModel> GetArticlesByCategoryId(int Id)
         {
             var articlesByCategory = this.ArticleRepository
                 .All()
@@ -107,6 +107,54 @@
                 .ToList();
 
             return articlesByCategory;
+        }
+
+        public async Task DeleteArticleAsync(int id)
+        {
+            var article = this.ArticleRepository
+                .All()
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+
+            this.ArticleRepository.Delete(article);
+            await this.ArticleRepository.SaveChangesAsync();
+        }
+
+        public ArticleViewModel GetArticleById(int Id)
+        {
+            var article = this.ArticleRepository
+                .All()
+                .Where(x => x.Id == Id)
+                .Select(x => new ArticleViewModel
+                {
+                    Id = x.Id,
+                    CategoryId = x.CategoryId,
+                    Title = x.Title,
+                    CategoryName = x.Category.Name,
+                    Content = x.Content,
+                    ImageUrl = x.ImageUrl,
+                    UserId = x.AddedByUserId,
+                    CreatedOn = x.CreatedOn.ToString("f"),
+                    Username = x.AddedByUser.UserName,
+                })
+                .FirstOrDefault();
+            return article;
+        }
+
+        public async Task EditArticleAsync(EditArticleInputModel model, int articleId, string userId)
+        {
+            var article = this.ArticleRepository
+                .All()
+                .Where(x => x.Id == articleId)
+                .FirstOrDefault();
+
+            article.Title = model.Title;
+            article.Content = model.Content;
+            article.CategoryId = model.CategoryId;
+            article.ImageUrl = model.ImageUrl;
+
+            this.ArticleRepository.Update(article);
+            await this.ArticleRepository.SaveChangesAsync();
         }
     }
 }

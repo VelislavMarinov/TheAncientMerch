@@ -1,4 +1,5 @@
 ﻿@using TheAncientMerch.Common
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,34 +30,37 @@
                                 <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </div>
                         </div>
-                        <div class="dropdown">
-                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
-                                Deities
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Gods">Gods</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Titans">Titans</a>
+                      @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <div class="dropdown">
+                                <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                    Deities
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Gods">Gods</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Deities" asp-action="Titans">Titans</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
-                                Sculptures
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Sculptures" asp-action="All">All</a>
-                                <a class="dropdown-item " asp-area="" asp-controller="Sculptures" asp-action="Create">Create</a>
+                            <div class="dropdown">
+                                <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                    Sculptures
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Sculptures" asp-action="All">All</a>
+                                    <a class="dropdown-item " asp-area="" asp-controller="Sculptures" asp-action="Create">Create</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
-                                Articles
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" asp-area="" asp-controller="Articles" asp-action="All">All Articles</a>
-                                <a class="dropdown-item " asp-area="" asp-controller="Articles" asp-action="Categories" asp-route-id="" >Article Categories</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Articles" asp-action="Create">Create Article</a>
+                            <div class="dropdown">
+                                <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                    Articles
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Articles" asp-action="All">All Articles</a>
+                                    <a class="dropdown-item " asp-area="" asp-controller="Articles" asp-action="Categories" asp-route-id="" >Article Categories</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Articles" asp-action="Create">Create Article</a>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

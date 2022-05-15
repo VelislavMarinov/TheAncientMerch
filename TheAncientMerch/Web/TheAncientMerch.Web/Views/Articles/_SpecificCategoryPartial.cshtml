@@ -8,7 +8,7 @@
         <div class="text-center col-lg-4 col-xl-4 col-md-4 col-sm-12 col-12 mt-3" style="width: 18rem;">
             <div class="card border-dark">
                 <div class="card-header col-md border text-center">
-                    <a>
+                    <a asp-controller="Articles" asp-action="Article" asp-route-id="@article.Id">
                         <img src="@article.ImageUrl" class="card-img-top">
                     </a>
                 </div>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-footer">
                     Article category:
-                    <a asp-controller="Articles" asp-action="Categories" asp-route-id="@article.CategoryName" >
+                    <a asp-controller="Articles" asp-action="Categories" asp-route-id="@String.Concat(article.CategoryName.Where(c => !Char.IsWhiteSpace(c)))" >
                         <p class="card-text"> @article.CategoryName</p>
                     </a>
                 </div>
