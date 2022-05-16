@@ -45,18 +45,12 @@
             return this.Redirect("/");
         }
 
-        public IActionResult All(int id = 1)
+        public async Task<IActionResult> All([FromQuery] SculpturesQueryViewModel query)
         {
-            var itemsPerPage = 4;
-            var view = new AllSculpturesViewModel
-            {
-                PageNumber = id,
-                Sculptures = this.SculptureService.GetAllSculptures(id, itemsPerPage),
-                ItemsPerPage = itemsPerPage,
-                ItemsCount = this.SculptureService.GetCount(),
-            };
+            var itemsPerPage = 6;
+            var sculpturesQuery = await this.SculptureService.GetAllSculptures(query.PageNumber, itemsPerPage, query.Material, query.SculptureType, query.Color);
 
-            return this.View(view);
+            return this.View(sculpturesQuery);
         }
 
         public IActionResult Sculpture(int id)

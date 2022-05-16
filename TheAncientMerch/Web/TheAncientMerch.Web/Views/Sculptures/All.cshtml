@@ -1,57 +1,79 @@
-﻿@using TheAncientMerch.Web.ViewModels.GreekDeitys
-@model AllSculpturesViewModel
+﻿@using TheAncientMerch.Data.Models
+@using TheAncientMerch.Web.ViewModels.GreekDeitys
+@model SculpturesQueryViewModel
 
 @{
     this.ViewData["Title"] = "All sculptures";
 }
 
-<form method="get">
-    <div class="row">
+<form>
+    <div class="form-row">
         <div class="form-group col-md-4">
-            <div class="form-group">
-                <label>Type of Sculpture</label>
-                <select class="form-control">
-                    <option value="">All</option>
-                    <option>Small</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group col-md-4">
-            <label>Sort by Material</label>
-            <select class="form-control">
-                    <option value="0" selected>Date Created</option>
-                    <option value="1">Year</option>
-                    <option value="2">Brand And Model</option>
+            <label asp-for="SculptureType"></label>
+            <select asp-for="SculptureType" class="form-control">
+                <option value="@null">Search by type of sculpture</option>
+               @foreach (var choice in Enum.GetValues(typeof(SculptureType)))
+                {
+                   <option value="@choice">@Enum.GetName(typeof(SculptureType), choice)</option>
+                }
             </select>
         </div>
         <div class="form-group col-md-4">
-            <div class="form-group">
-                <label>Sort by Color</label>
-                <select class="form-control">
-                    <option value="0" selected>Date Created</option>
-                    <option value="1">Year</option>
-                    <option value="2">Brand And Model</option>
-                </select>
-            </div>
+            <label asp-for="Material"></label>
+            <select asp-for="Material" class="form-control">
+                <option value="">Search by material</option>
+                @foreach (var material in Model.Materials)
+                {
+                    <option value="@material">@material</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Color"></label>
+            <select asp-for="Color" class="form-control">
+                <option value="@null">Search by color</option>
+               @foreach (int choice in Enum.GetValues(typeof(SculptureColor)))
+                {
+                   <option value="@choice">@Enum.GetName(typeof(SculptureColor), choice)</option>
+                }
+            </select>
         </div>
     </div>
+    <button type="submit" class="btn btn-primary">Search</button>
 </form>
+<hr/>
+
+
+
 
 <div class="row">
-    @foreach(var sculpture in Model.Sculptures)
-    {   
-      <div class="col-md-3">
-            <div class="card mb-3">
-                <img class="card-img-top" src="@sculpture.ImageUrl" alt="" width ="150" height = "250">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-center">@sculpture.Name</h5>
-                    <a asp-controller="Sculptures" asp-action="Sculpture" asp-route-id="@sculpture.Id"  class="btn btn-primary">View</a>
-                        <a  class="btn btn-warning">Edit</a>
-                        <a  class="btn btn-danger">Delete</a>
+    
+    @foreach (var sculpture in Model.Sculptures)
+    {
+        <div class="col-sm-6 col-md-4 mb-4">
+            <div class="component">
+                <div class="card card-height">
+                    <div class="card-header">
+                        <img class="card-img card-home-img" height="300" src="@sculpture.ImageUrl" alt="">
+                    </div>
+                    <div class="card-body">
+                        <span class="badge badge-success mb-2">@sculpture.Material</span>
+                        <span class="badge badge-warning mb-2">@sculpture.Color Color</span>
+                        <span class="badge badge-light mb-2">Type: @sculpture.SculptureType</span>
+                        <h4 class="card-title">@sculpture.Name</h4>
+                        <p class="card-text">Price: <b>@sculpture.Price</b></p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-controller="Sculptures"
+                           asp-action="Sculpture"
+                           asp-route-id="@sculpture.Id"
+                           class="btn btn-primary">
+                            View More
+                        </a>
+                    </div>
                 </div>
             </div>
-      </div>
+        </div>
     }
 </div>
 

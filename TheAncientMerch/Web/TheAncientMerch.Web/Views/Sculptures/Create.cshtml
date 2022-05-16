@@ -3,103 +3,97 @@
 @model CreateSculptureInputModel
 
 
+@{
+    ViewData["Title"] = "Create Sculpture";
+}
 
-<h1>Hello</h1>
 
-<form method = "post" >
-    <div asp-validation-summary= "All" class="text-danger"></div>
-    <div class="form-row align-items-center">
-      <div class="col-4">
-        <label asp-for= "Name"></label>
-        <input asp-for= "Name" class="form-control"  />
-        <span asp-validation-for="Name" class="text-danger"></span>
-      </div>
-      <div class="col-3">
-        <label asp-for= "Price"></label>
-        <input asp-for= "Price" class="form-control"  />
-        <span asp-validation-for="Price" class="text-danger"></span>
-      </div>
-    </div>
-    <div class="form-row align-items-center">
-      <div class="col-auto">
-        <label asp-for= "Height"></label>
-        <input asp-for= "Height" class="form-control"  />
-        <span asp-validation-for="Height" class="text-danger"></span>
-      </div>
-      <div class="col-auto">
-        <label asp-for= "Width"></label>
-        <input asp-for= "Width" class="form-control"  />
-        <span asp-validation-for="Width" class="text-danger"></span>
-      </div>
-      <div class="col-auto">
-        <label asp-for= "Weigth"></label>
-        <input asp-for= "Weigth" class="form-control"  />
-        <span asp-validation-for="Weigth" class="text-danger"></span>
-      </div>
-    </div>
-    <div class="form-group">
-        <label asp-for= "ImageUrl">Image</label>
-        <input asp-for= "ImageUrl" class="form-control"  />
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for= "Description"></label>
-        <textarea class="form-control" rows="3" asp-for= "Description"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-    <div class="form-row">
-        <div class="col-auto">
-            <label asp-for="MaterialId"></label>
-            <select asp-for="MaterialId" class="form-control">
-              @foreach (var material in Model.Materials)
-              {
-                  <option value="@material.Id">@material.Name</option>
-              }
-            </select>
-          </div>
-        <div class="col-auto">
-            <label asp-for="IsMale"></label>
-            <select asp-for="IsMale" class="form-control">
-              <option value="@null">Undefined</option>
-              <option value="@false">Female</option>
-              <option value="@true">Male</option>
-            </select>
-        </div>
-        <div class="col-auto">
-            <label asp-for="IsGardenStatue"></label>
-            <select asp-for="IsGardenStatue" class="form-control">
-              <option value="@false">Yes</option>
-              <option value="@true">No</option>
-            </select>
-        </div>
-      <div class="col-3">
-          <label asp-for="SculptureType" ></label>
-            <div class="col-md">
-               <select asp-for="SculptureType" class="form-control">
-                @foreach (int choice in Enum.GetValues(typeof(SculptureType)))
-                {
-                  <option value="@choice">@Enum.GetName(typeof(SculptureType), choice)</option>
-                }
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 offset-lg-2 col-lg-10 offset-xl-1 col-xl-10">
+            <h1 class="text-center">@ViewData["Title"]</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Sculpture Name">
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl"></label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="Url">
+                    <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" placeholder="Information about sculpture">
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                </div>
+                
+                 <div class="form-group">
+                    <label asp-for="Origin"></label>
+                    <input asp-for="Origin" class="form-control" placeholder="Info from where the sculpture is.">
+                    <span asp-validation-for="Origin" class="text-danger small"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="Height"></label>
+                    <input asp-for="Height" class="form-control" placeholder="0">
+                    <span asp-validation-for="Height" class="text-danger small"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="Width"></label>
+                    <input asp-for="Width" class="form-control" placeholder="0">
+                    <span asp-validation-for="Width" class="text-danger small"></span>
+                </div>
+                 <div class="form-group">
+                    <label asp-for="Weigth"></label>
+                    <input asp-for="Weigth" class="form-control" placeholder="0">
+                    <span asp-validation-for="Weigth" class="text-danger small"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="MaterialId"></label>
+                    <select asp-for="MaterialId" class="form-control">
+                     @foreach (var material in Model.Materials)
+                     {
+                        <option value="@material.Id">@material.Name</option>
+                     }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IsMale"></label>
+                        <select asp-for="IsMale" class="form-control">
+                            <option value="@null">Undefined</option>
+                            <option value="@false">Female</option>
+                            <option value="@true">Male</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                   <label asp-for="SculptureType" ></label>
+                     <select asp-for="SculptureType" class="form-control">
+                        @foreach (int choice in Enum.GetValues(typeof(SculptureType)))
+                          {
+                              <option value="@choice">@Enum.GetName(typeof(SculptureType), choice)</option>
+                          }
                  </select>
-            </div>
-      </div>
-       <div class="col-3">
-          <label asp-for="Color" ></label>
-            <div class="col-md">
-               <select asp-for="Color" class="form-control">
-                @foreach (int choice in Enum.GetValues(typeof(SculptureColor)))
-                {
-                  <option value="@choice">@Enum.GetName(typeof(SculptureColor), choice)</option>
-                }
+                </div>
+                <div class="form-group">
+                     <label asp-for="Color" ></label>
+                      <select asp-for="Color" class="form-control">
+                        @foreach (int choice in Enum.GetValues(typeof(SculptureColor)))
+                        {
+                            <option value="@choice">@Enum.GetName(typeof(SculptureColor), choice)</option>
+                        }
                  </select>
-            </div>
-      </div>
-     </div>
-    <div class="form-group">
-        <label asp-for= "Origin"></label>
-        <input class="form-control" asp-for= "Origin">
-        <span asp-validation-for="Origin" class="text-danger"></span>
+                </div>
+                <input type="submit" class="btn btn-info" value="@ViewData["Title"]" />
+            </form>
+        </div>
     </div>
-   <input type="submit" class="btn btn-primary" />
-</form>
+</div>
+
+
+
 

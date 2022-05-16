@@ -1,5 +1,7 @@
 ﻿namespace TheAncientMerch.Services.Data.Sculpture
 {
+    using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -7,17 +9,21 @@
     using TheAncientMerch.Data.Common.Repositories;
 
     using TheAncientMerch.Data.Models;
-
+    using TheAncientMerch.Services.Data.SculptureMaterial;
+    using TheAncientMerch.Web.ViewModels.GreekDeitys;
     using TheAncientMerch.Web.ViewModels.Sculptures;
 
     public class SculptureService : ISculptureService
     {
-        public SculptureService(IDeletableEntityRepository<Sculpture> sculptureRepository)
+        public SculptureService(IDeletableEntityRepository<Sculpture> sculptureRepository, ISculptureMaterialService materialService)
         {
             this.SculptureRepository = sculptureRepository;
+            this.MaterialService = materialService;
         }
 
         public IDeletableEntityRepository<Sculpture> SculptureRepository { get; }
+
+        public ISculptureMaterialService MaterialService { get; }
 
         public async Task Create(CreateSculptureInputModel createSculptureInputModel)
         {
@@ -34,7 +40,6 @@
                 Weigth = createSculptureInputModel.Weigth,
                 Price = createSculptureInputModel.Price,
                 IsMale = createSculptureInputModel.IsMale,
-                IsGardenStatue = createSculptureInputModel.IsGardenStatue,
                 MaterialId = createSculptureInputModel.MaterialId,
             };
 
@@ -47,10 +52,31 @@
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<SculptureViewModel> GetAllSculptures(int currentPage, int itemsPerPage)
+        public async Task<SculpturesQueryViewModel> GetAllSculptures(int currentPage, int itemsPerPage, string material, int? sculptureType, int? color)
         {
-            var sculptures = this.SculptureRepository
+            var sculpturesQuery = this.SculptureRepository
                 .All()
+                .Where(x => x.IsDeleted == false)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(material))
+            {
+                sculpturesQuery = sculpturesQuery.Where(x => x.Material.Name.ToLower() == material.ToLower());
+            }
+
+            if (sculptureType != null)
+            {
+                sculpturesQuery = sculpturesQuery.Where(x => (int)x.SculptureType == sculptureType);
+            }
+
+            if (color != null)
+            {
+                sculpturesQuery = sculpturesQuery.Where(x => (int)x.Color == color);
+            }
+
+            var countSculptures = await sculpturesQuery.CountAsync();
+
+            var sculptures = await sculpturesQuery
                 .OrderByDescending(x => x.Id)
                 .Skip((currentPage - 1) * itemsPerPage)
                 .Take(itemsPerPage)
@@ -68,9 +94,45 @@
                     Price = x.Price,
                     ImageUrl = x.ImageUrl,
                     SculptureType = x.SculptureType.ToString(),
-                });
+                })
+                .ToListAsync();
 
-            return sculptures;
+            List<string> scupltureTypes = new List<string>();
+            foreach (var type in Enum.GetValues(typeof(SculptureType)))
+            {
+                scupltureTypes.Add(type.ToString());
+            }
+
+            List<string> scupltureColors = new List<string>();
+            foreach (var sColor in Enum.GetValues(typeof(SculptureType)))
+            {
+                scupltureColors.Add(sColor.ToString());
+            }
+
+            List<string> scupltureMaterials = new List<string>();
+            foreach (var sMaterial in MaterialService.GetAllMaterials())
+            {
+                scupltureMaterials.Add(sMaterial.Name);
+            }
+
+            // var view = new SculpturesQueryViewModel
+            // {
+            //    PageNumber = query.PageNumber,
+            //    Sculptures = this.SculptureService.GetAllSculptures(query.PageNumber, itemsPerPage, query.),
+            //    ItemsPerPage = itemsPerPage,
+            //    ItemsCount = this.SculptureService.GetCount(),
+            // };
+            return new SculpturesQueryViewModel()
+            {
+                Sculptures = sculptures,
+                ItemsCount = countSculptures,
+                PageNumber = currentPage,
+                ItemsPerPage = itemsPerPage,
+                Materials = scupltureMaterials,
+                Color = color,
+                Material = material,
+                SculptureType = sculptureType,
+            };
         }
 
         public IEnumerable<SculptureViewModel> GetAllUserSculptures()
@@ -108,7 +170,5 @@
 
             return sculpture;
         }
-
-
     }
 }

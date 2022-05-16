@@ -15,6 +15,7 @@
         public string Name { get; set; }
 
         [Required]
+        [Range(5, int.MaxValue)]
         public decimal Price { get; set; }
 
         [Required]
@@ -38,16 +39,19 @@
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Made of material")]
         public int MaterialId { get; set; }
 
         public IEnumerable<SculptureMaterialViewModel> Materials { get; set; }
 
+        [Required]
+        [Display(Name = "Gender")]
         public bool? IsMale { get; set; }
-
-        public bool IsGardenStatue { get; set; }
 
         public SculptureColor Color { get; set; }
 
+        [Required]
+        [Display(Name = "Type of sculpture")]
         public SculptureType SculptureType { get; set; }
 
         [Required]

@@ -4,7 +4,7 @@
 
     public class PagingViewModel
     {
-        public int PageNumber { get; set; }
+        public int PageNumber { get; set; } = 1;
 
         public bool HasPreviousPage => this.PageNumber > 1;
 
