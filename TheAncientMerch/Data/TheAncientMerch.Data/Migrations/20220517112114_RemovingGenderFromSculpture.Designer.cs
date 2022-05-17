@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheAncientMerch.Data;
 
@@ -11,9 +12,10 @@ using TheAncientMerch.Data;
 namespace TheAncientMerch.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220517112114_RemovingGenderFromSculpture")]
+    partial class RemovingGenderFromSculpture
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -455,6 +457,106 @@ namespace TheAncientMerch.Data.Migrations
                     b.ToTable("GreekDeities");
                 });
 
+            modelBuilder.Entity("TheAncientMerch.Data.Models.HomeDecor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AddedByUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Color")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("Depth")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Height")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("HomeDecorType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Origin")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Weigth")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Width")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddedByUserId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("HomeDecors");
+                });
+
+            modelBuilder.Entity("TheAncientMerch.Data.Models.HomeDecorMaterial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeDecorMaterials");
+                });
+
             modelBuilder.Entity("TheAncientMerch.Data.Models.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -536,6 +638,9 @@ namespace TheAncientMerch.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsGardenStatue")
                         .HasColumnType("bit");
 
                     b.Property<int>("MaterialId")
@@ -723,6 +828,23 @@ namespace TheAncientMerch.Data.Migrations
                     b.Navigation("Post");
                 });
 
+            modelBuilder.Entity("TheAncientMerch.Data.Models.HomeDecor", b =>
+                {
+                    b.HasOne("TheAncientMerch.Data.Models.ApplicationUser", "AddedByUser")
+                        .WithMany("HomeDecors")
+                        .HasForeignKey("AddedByUserId");
+
+                    b.HasOne("TheAncientMerch.Data.Models.HomeDecorMaterial", "Material")
+                        .WithMany("HomeDecors")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AddedByUser");
+
+                    b.Navigation("Material");
+                });
+
             modelBuilder.Entity("TheAncientMerch.Data.Models.Post", b =>
                 {
                     b.HasOne("TheAncientMerch.Data.Models.ApplicationUser", "AddedByUser")
@@ -767,6 +889,8 @@ namespace TheAncientMerch.Data.Migrations
 
                     b.Navigation("Comments");
 
+                    b.Navigation("HomeDecors");
+
                     b.Navigation("Logins");
 
                     b.Navigation("Posts");
@@ -784,6 +908,11 @@ namespace TheAncientMerch.Data.Migrations
             modelBuilder.Entity("TheAncientMerch.Data.Models.ForumCategory", b =>
                 {
                     b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("TheAncientMerch.Data.Models.HomeDecorMaterial", b =>
+                {
+                    b.Navigation("HomeDecors");
                 });
 
             modelBuilder.Entity("TheAncientMerch.Data.Models.Post", b =>

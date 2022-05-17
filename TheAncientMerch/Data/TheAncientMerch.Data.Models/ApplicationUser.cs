@@ -20,7 +20,6 @@ namespace TheAncientMerch.Data.Models
             this.Articles = new HashSet<Article>();
             this.Posts = new HashSet<Post>();
             this.Sculptures = new HashSet<Sculpture>();
-            this.HomeDecors = new HashSet<HomeDecor>();
             this.Comments = new HashSet<Comment>();
         }
 
@@ -41,8 +40,6 @@ namespace TheAncientMerch.Data.Models
         public virtual ICollection<Post> Posts { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-
-        public virtual ICollection<HomeDecor> HomeDecors { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

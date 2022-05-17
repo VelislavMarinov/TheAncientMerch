@@ -12,7 +12,7 @@
             <label asp-for="SculptureType"></label>
             <select asp-for="SculptureType" class="form-control">
                 <option value="@null">Search by type of sculpture</option>
-               @foreach (var choice in Enum.GetValues(typeof(SculptureType)))
+               @foreach (int choice in Enum.GetValues(typeof(SculptureType)))
                 {
                    <option value="@choice">@Enum.GetName(typeof(SculptureType), choice)</option>
                 }
@@ -61,7 +61,7 @@
                         <span class="badge badge-warning mb-2">@sculpture.Color Color</span>
                         <span class="badge badge-light mb-2">Type: @sculpture.SculptureType</span>
                         <h4 class="card-title">@sculpture.Name</h4>
-                        <p class="card-text">Price: <b>@sculpture.Price</b></p>
+                        <p class="card-text">Price: <b>$@sculpture.Price USD</b></p>
                     </div>
                     <div class="card-footer">
                         <a asp-controller="Sculptures"

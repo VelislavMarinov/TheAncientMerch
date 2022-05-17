@@ -8,7 +8,9 @@
 
     public interface ISculptureService
     {
-        Task Create(CreateSculptureInputModel createSculptureInputModel);
+        Task Create(CreateSculptureInputModel createSculptureInputModel, string userId);
+
+        Task DeleteSculptureAsync(int id);
 
         Task<SculpturesQueryViewModel> GetAllSculptures(int id, int itemsPerPage, string material, int? sculptureType, int? color);
 
@@ -19,5 +21,7 @@
         void DeleteSculpture(string userId, int sculptureId);
 
         SculptureViewModel GetSculptureById(int id);
+
+        Task EditSculptureAsync(EditSculptureViewModel model, int sculptureId);
     }
 }

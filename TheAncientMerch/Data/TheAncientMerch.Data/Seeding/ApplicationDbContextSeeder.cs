@@ -29,7 +29,6 @@
                               new SettingsSeeder(),
                               new GreekDeitySeeder(),
                               new SculptureMaterialSeeder(),
-                              new HomeDecorMaterialSeeder(),
                               new ArticleCategoriesSeeder(),
                               new ForumCategoriesSeeder(),
                           };

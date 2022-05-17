@@ -1,18 +1,23 @@
-﻿namespace TheAncientMerch.Data.Models
+﻿namespace TheAncientMerch.Web.ViewModels.Sculptures
 {
+    using System.Collections.Generic;
+
     using System.ComponentModel.DataAnnotations;
 
-    using TheAncientMerch.Data.Common.Models;
+    using TheAncientMerch.Data.Models;
 
     using static TheAncientMerch.Common.DataConstants;
 
-    public class Sculpture : BaseDeletableModel<int>
+    public class EditSculptureViewModel
     {
-        [Required]
-        [MaxLength(SculptureMaterialNameMaxLength)]
+        public int Id { get; set; }
+
+        [MinLength(SculptureNameMinLegth)]
+        [MaxLength(SculptureNameMaxLegth)]
         public string Name { get; set; }
 
         [Required]
+        [Range(5, int.MaxValue)]
         public decimal Price { get; set; }
 
         [Required]
@@ -20,35 +25,36 @@
         public string ImageUrl { get; set; }
 
         [Required]
+        [Range(5, 200)]
         public decimal Height { get; set; }
 
         [Required]
+        [Range(5, 100)]
         public decimal Width { get; set; }
 
-        [Required]
+        [Range(0, 30)]
         public decimal Weigth { get; set; }
 
         [Required]
+        [MinLength(SculptureDescriptionMinLength)]
         [MaxLength(SculptureDescriptionMaxLength)]
         public string Description { get; set; }
 
+        [Required]
+        [Display(Name = "Made of material")]
         public int MaterialId { get; set; }
 
-        [Required]
-        public SculptureMaterial Material { get; set; }
+        public IEnumerable<SculptureMaterialViewModel> Materials { get; set; }
 
-        [Required]
         public SculptureColor Color { get; set; }
 
+        public string UserId { get; set; }
+
         [Required]
+        [Display(Name = "Type of sculpture")]
         public SculptureType SculptureType { get; set; }
 
-        public string AddedByUserId { get; set; }
-
-        public virtual ApplicationUser AddedByUser { get; set; }
-
         [Required]
-        [MaxLength(OriginMaxLegth)]
         public string Origin { get; set; }
     }
 }

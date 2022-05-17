@@ -15,11 +15,12 @@
         public string Name { get; set; }
 
         [Required]
-        [Range(5, int.MaxValue)]
+        [Range(5, 10000)]
         public decimal Price { get; set; }
 
         [Required]
         [Url]
+        [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
 
         [Required]
@@ -43,10 +44,6 @@
         public int MaterialId { get; set; }
 
         public IEnumerable<SculptureMaterialViewModel> Materials { get; set; }
-
-        [Required]
-        [Display(Name = "Gender")]
-        public bool? IsMale { get; set; }
 
         public SculptureColor Color { get; set; }
 

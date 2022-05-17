@@ -3,6 +3,25 @@
 
 @{
     ViewData["Title"] = Model.Name;
+    var userId = this.User.GetId();
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Sculptures/All">All sculptures</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>@this.TempData["Message"]</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 }
 
 
@@ -11,7 +30,7 @@
     <div class="row">
         <div class="col-md-9 mb40">
             <article>
-                <img  src="@Model.ImageUrl" width="300"  alt="" class="img-thumbnail rounded mx-auto d-block">
+                <img  src="@Model.ImageUrl" width="400"  height="400"  alt="" class="card rounded mx-auto d-block">
                 <div class="post-content">
                     <hr/>
                     <h3 class="text-center">Description</h3>
@@ -54,22 +73,33 @@
                      </li>
                     <hr/>
                     <li>
-                        @*add verification if user is creator*@
-                        <div class="mb-1">
-                            <a asp-area="Administration" asp-controller="Workouts" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary text-white">
-                             Edit
-                            </a>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Delete
-                            </button>
+                        
+                        @if (userId == Model.UserId)
+                        {
+                            <div class="mb-1">
+                              <div class="text-center pt-2">
+                                <a  asp-controller="Sculptures" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary text-white">
+                                    Edit
+                                </a>
+                              </div>
+                              <div class="text-center pt-2">
+                                    <form method="post" asp-controller="Sculptures" asp-action="Delete" asp-route-id="@Model.Id" id="deleteForm"></form>
+                                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                              </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="text-center">
                             <a type="button" asp-area=""
-                             asp-controller=""
-                             asp-action=""
-                             asp-route-id=""
+                                asp-controller=""
+                                asp-action=""
+                                asp-route-id=""
                              class="btn btn-primary tests text-uppercase text-center">
-                             Buy
+                                    Buy
                             </a>
-                        </div>
+                            </div>
+                        }
                     </li>
                 </ul>
             </div>
@@ -77,3 +107,19 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you want to remove "@Model.Name" Sculpture ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+

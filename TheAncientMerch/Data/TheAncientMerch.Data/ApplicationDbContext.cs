@@ -34,10 +34,6 @@
 
         public DbSet<SculptureMaterial> SculptureMaterials { get; set; }
 
-        public DbSet<HomeDecor> HomeDecors { get; set; }
-
-        public DbSet<HomeDecorMaterial> HomeDecorMaterials { get; set; }
-
         public DbSet<Article> Articles { get; set; }
 
         public DbSet<ArticleCategory> ArticleCategories { get; set; }

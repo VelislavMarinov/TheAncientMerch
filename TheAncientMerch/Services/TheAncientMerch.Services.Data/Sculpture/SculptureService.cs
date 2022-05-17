@@ -25,7 +25,7 @@
 
         public ISculptureMaterialService MaterialService { get; }
 
-        public async Task Create(CreateSculptureInputModel createSculptureInputModel)
+        public async Task Create(CreateSculptureInputModel createSculptureInputModel, string userId)
         {
             var sculpture = new Sculpture
             {
@@ -39,8 +39,8 @@
                 Height = createSculptureInputModel.Height,
                 Weigth = createSculptureInputModel.Weigth,
                 Price = createSculptureInputModel.Price,
-                IsMale = createSculptureInputModel.IsMale,
                 MaterialId = createSculptureInputModel.MaterialId,
+                AddedByUserId = userId,
             };
 
             await this.SculptureRepository.AddAsync(sculpture);
@@ -50,6 +50,28 @@
         public void DeleteSculpture(string userId,int sculptureId)
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task EditSculptureAsync(EditSculptureViewModel model, int sculptureId)
+        {
+            var sculpture = this.SculptureRepository
+                .All()
+                .Where(x => x.Id == sculptureId)
+                .FirstOrDefault();
+            sculpture.Name = model.Name;
+            sculpture.ImageUrl = model.ImageUrl;
+            sculpture.Description = model.Description;
+            sculpture.Origin = model.Origin;
+            sculpture.Color = model.Color;
+            sculpture.SculptureType = model.SculptureType;
+            sculpture.Width = model.Width;
+            sculpture.Height = model.Height;
+            sculpture.Weigth = model.Weigth;
+            sculpture.Price = model.Price;
+            sculpture.MaterialId = model.MaterialId;
+
+            this.SculptureRepository.Update(sculpture);
+            await this.SculptureRepository.SaveChangesAsync();
         }
 
         public async Task<SculpturesQueryViewModel> GetAllSculptures(int currentPage, int itemsPerPage, string material, int? sculptureType, int? color)
@@ -97,31 +119,12 @@
                 })
                 .ToListAsync();
 
-            List<string> scupltureTypes = new List<string>();
-            foreach (var type in Enum.GetValues(typeof(SculptureType)))
-            {
-                scupltureTypes.Add(type.ToString());
-            }
-
-            List<string> scupltureColors = new List<string>();
-            foreach (var sColor in Enum.GetValues(typeof(SculptureType)))
-            {
-                scupltureColors.Add(sColor.ToString());
-            }
-
             List<string> scupltureMaterials = new List<string>();
-            foreach (var sMaterial in MaterialService.GetAllMaterials())
+            foreach (var sMaterial in this.MaterialService.GetAllMaterials())
             {
                 scupltureMaterials.Add(sMaterial.Name);
             }
 
-            // var view = new SculpturesQueryViewModel
-            // {
-            //    PageNumber = query.PageNumber,
-            //    Sculptures = this.SculptureService.GetAllSculptures(query.PageNumber, itemsPerPage, query.),
-            //    ItemsPerPage = itemsPerPage,
-            //    ItemsCount = this.SculptureService.GetCount(),
-            // };
             return new SculpturesQueryViewModel()
             {
                 Sculptures = sculptures,
@@ -165,10 +168,22 @@
                     Price = x.Price,
                     ImageUrl = x.ImageUrl,
                     SculptureType = x.SculptureType.ToString(),
+                    UserId = x.AddedByUserId,
                 })
                 .FirstOrDefault();
 
             return sculpture;
+        }
+
+        public async Task DeleteSculptureAsync(int id)
+        {
+            var sculpture = this.SculptureRepository
+                .All()
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+
+            this.SculptureRepository.Delete(sculpture);
+            await this.SculptureRepository.SaveChangesAsync();
         }
     }
 }
