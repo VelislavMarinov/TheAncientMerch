@@ -15,7 +15,9 @@
         public const int CommentContentMaxLength = 1000;
 
         // ForumCategory Model
+        public const int ForumCategoryNameMinLength = 4;
         public const int ForumCategoryNameMaxLength = 50;
+        public const int ForumCategoryDescriptionMinLength = 8;
         public const int ForumCategoryDescriptionMaxLength = 200;
 
         // GreekDeity

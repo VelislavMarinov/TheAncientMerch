@@ -21,6 +21,7 @@ namespace TheAncientMerch.Data.Models
             this.Posts = new HashSet<Post>();
             this.Sculptures = new HashSet<Sculpture>();
             this.Comments = new HashSet<Comment>();
+            this.ForumCategories = new HashSet<ForumCategory>();
         }
 
         // Audit info
@@ -46,5 +47,7 @@ namespace TheAncientMerch.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<ForumCategory> ForumCategories { get; set; }
     }
 }

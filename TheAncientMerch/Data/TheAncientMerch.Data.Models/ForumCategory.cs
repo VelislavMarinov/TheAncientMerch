@@ -16,12 +16,19 @@
         }
 
         [Required]
+        [MinLength(ForumCategoryNameMinLength)]
         [MaxLength(ForumCategoryNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
+        [MinLength(ForumCategoryDescriptionMinLength)]
         [MaxLength(ForumCategoryDescriptionMaxLength)]
         public string Description { get; set; }
+
+        [Required]
+        public string AddedByUserId { get; set; }
+
+        public virtual ApplicationUser AddedByUser { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
     }
