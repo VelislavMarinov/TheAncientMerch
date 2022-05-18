@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using TheAncientMerch.Data;
-    using TheAncientMerch.Data.Common;
-    using TheAncientMerch.Data.Common.Repositories;
-    using TheAncientMerch.Data.Models;
-    using TheAncientMerch.Data.Repositories;
-    using TheAncientMerch.Data.Seeding;
-    using TheAncientMerch.Services.Data;
-    using TheAncientMerch.Services.Mapping;
-    using TheAncientMerch.Services.Messaging;
-    using TheAncientMerch.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -21,10 +10,21 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using TheAncientMerch.Services.Data.GreekDeity;
-    using TheAncientMerch.Services.Data.SculptureMaterial;
-    using TheAncientMerch.Services.Data.Sculpture;
+    using TheAncientMerch.Data;
+    using TheAncientMerch.Data.Common;
+    using TheAncientMerch.Data.Common.Repositories;
+    using TheAncientMerch.Data.Models;
+    using TheAncientMerch.Data.Repositories;
+    using TheAncientMerch.Data.Seeding;
+    using TheAncientMerch.Services.Data;
     using TheAncientMerch.Services.Data.Article;
+    using TheAncientMerch.Services.Data.Forum;
+    using TheAncientMerch.Services.Data.GreekDeity;
+    using TheAncientMerch.Services.Data.Sculpture;
+    using TheAncientMerch.Services.Data.SculptureMaterial;
+    using TheAncientMerch.Services.Mapping;
+    using TheAncientMerch.Services.Messaging;
+    using TheAncientMerch.Web.ViewModels;
 
     public class Startup
     {
@@ -73,6 +73,7 @@
             services.AddTransient<ISculptureMaterialService, SculptureMaterialService>();
             services.AddTransient<ISculptureService, SculptureService>();
             services.AddTransient<IArticleService, ArticleService>();
+            services.AddTransient<IForumService, ForumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,1 +1,49 @@
-﻿
+﻿@using TheAncientMerch.Web.ViewModels.Forum
+@model AllCategoriesViewModel
+
+@{
+    this.ViewData["Title"] = "Forum";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+
+
+<div class="col-xl-10 col-md-10 col-sm-10 col-10 offset-1">
+    <div class="text-center">
+        <a asp-controller="Forums" asp-action="Create" class="btn btn-outline-secondary m-4">Create new category</a>
+    </div>
+    <div class="list-group">
+    @foreach (var category in Model.Categories)
+    {                
+        <a href="/Forums/Category/@category.Name" class="list-group-item list-group-item-action ">
+             <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@category.Name</h5>
+                <small>Posts: @category.PostsCount</small>
+             </div>
+            <p class="mb-1">@category.Description</p>
+        </a>
+        <br />
+    }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

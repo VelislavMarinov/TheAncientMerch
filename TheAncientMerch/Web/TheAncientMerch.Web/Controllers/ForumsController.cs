@@ -3,18 +3,37 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
-
     using Microsoft.AspNetCore.Mvc;
-
+    using TheAncientMerch.Services.Data.Forum;
     using TheAncientMerch.Web.ViewModels.Forum;
 
     [Authorize]
     public class ForumsController : Controller
     {
+        public ForumsController(IForumService forumService)
+        {
+            this.ForumService = forumService;
+        }
+
+        public IForumService ForumService { get; }
+
         [HttpGet]
         public IActionResult Categories()
         {
-            return this.View();
+            var viewModel = new AllCategoriesViewModel()
+            {
+                Categories = this.ForumService.GetAllCategories(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult Category(string id)
+        {
+            var viewModel = this.ForumService.GetCategoryByName(id);
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -30,6 +49,11 @@
             {
                 return this.View(model);
             }
+
+            var userId = this.User.GetId();
+
+            await this.ForumService.CreateCategoryAsync(model, userId);
+
             return this.Redirect("/Forums/Categories");
         }
     }
