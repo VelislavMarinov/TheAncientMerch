@@ -1,0 +1,131 @@
+﻿@using TheAncientMerch.Web.ViewModels.Posts
+@model PostViewModel
+
+@{
+    this.ViewData["Title"] = $"Post by {Model.AddedByUserUserName}";
+    var userId = User.GetId();
+}
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Forums/Categories">Forum</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+@if (this.TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>@this.TempData["Message"]</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="container-fluid mt-100">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4 border-dark">
+                <div class="card-header">
+                    <div class="media flex-wrap w-100 align-items-center">
+                        <div class="media-body ml-3">
+                            <div>
+                                <h4>@Model.Title</h4>
+                            </div>
+                            <div class="text-muted small">
+                                <strong>Post by:</strong>
+                                <a asp-area="" asp-controller="" asp-action="" asp-route-username="">@Model.AddedByUserUserName</a>
+                            </div>
+                            <div class="text-muted small">
+                                <strong>Category:</strong>
+                                <a href="/Forums/Category/@Model.CategoryName">
+                                    @Model.CategoryName
+                                </a>
+                            </div>
+                            <div class="text-muted small">
+                                <strong>Created on:</strong> @Model.CreatedOn.ToString("f")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <article>
+                        @Model.Content
+                    </article>
+                </div>
+                @if (userId == Model.AddedByUserId || User.IsInRole("Administrator"))
+                {
+                    <div class="text-center">
+                        <form method="post" asp-controller="Posts" asp-action="Delete" id="deleteForm" asp-route-id="@Model.Id"></form>
+                        <button class="btn btn-outline-danger mt-3" data-toggle="modal" data-target="#deleteModal">Delete post</button>
+                    </div>
+                }
+
+                @foreach (var reply in Model.Comments)
+                {
+                    <div class="container mt-2">
+                        <div class="col-xl-11 offset-xl-1 col-lg-11 offset-lg-1 col-md-11 offset-md-1 col-xs-11 offset-xs-1 col-11 offset-1">
+                            <div class="card border-dark mt-2">
+                                <div class="card-header">
+                                    <div class="media flex-wrap w-100 align-items-center">
+                                        <div class="media-body ml-3">
+                                            <div class="text-muted small">
+                                                <strong>Comment by:</strong>
+                                                <a asp-area="" asp-controller="" asp-action="" asp-route-username="">@reply.AddedByUserUserName</a>
+                                            </div>
+                                            <div class="text-muted small">
+                                                <strong>Created on:</strong> @reply.CreatedOn.ToString("f")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <article>
+                                        @reply.Content
+                                    </article>
+                                </div>
+
+
+                                @if (userId == reply.AddedByUserId || User.IsInRole("Administrator"))
+                                {
+                                    <div class="text-right m-2">
+                                        <form method="post" asp-controller="" asp-action="" asp-route-commentId="" asp-route-postId="">
+                                            <button class="btn btn-outline-danger mt-3">Delete comment</button>
+                                        </form>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="card-footer mt-2">
+                    <div class="text-center">
+                        <a asp-controller="" asp-action="" asp-route-id="" class="btn btn-outline-secondary m-1">Reply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-controller="Forums" asp-action="Categories" class="btn btn-outline-secondary m-1">Back to forum categories</a>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you want to remove "@Model.Title"?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteForm.submit()">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>

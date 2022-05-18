@@ -1,14 +1,16 @@
 ﻿@using TheAncientMerch.Web.ViewModels.Forum
 @model CategoryViewModel
 
-
+@{
+    this.ViewData["Title"] = Model.Name;
+}
 
 
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item"><a href="/Forums/Categories">Forum</a></li>
-        
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
     </ol>
 </nav>
 
@@ -36,7 +38,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="media-body mt-2 px-2">
-                            <h4 class="media-heading"><a asp-controller="" asp-action="" asp-route-id="">@post.Title</a></h4>
+                            <h4 class="media-heading"><a asp-controller="Posts" asp-action="Post" asp-route-id="@post.Id">@post.Title</a></h4>
                             <p>@post.Content</p>
                             <ul class="list-inline list-unstyled text-right">
                                 <li class="list-inline-item">
@@ -57,7 +59,7 @@
     }
     <div class="text-center pt-2">
         <div class="text-center">
-            <a asp-controller="" asp-action="" class="btn btn-outline-secondary m-2">Create post</a>
+            <a asp-controller="Posts" asp-action="Create" class="btn btn-outline-secondary m-2">Create post</a>
         </div>
 
         <div class="text-center pt-2">

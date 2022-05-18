@@ -20,6 +20,7 @@
     using TheAncientMerch.Services.Data.Article;
     using TheAncientMerch.Services.Data.Forum;
     using TheAncientMerch.Services.Data.GreekDeity;
+    using TheAncientMerch.Services.Data.Post;
     using TheAncientMerch.Services.Data.Sculpture;
     using TheAncientMerch.Services.Data.SculptureMaterial;
     using TheAncientMerch.Services.Mapping;
@@ -74,6 +75,7 @@
             services.AddTransient<ISculptureService, SculptureService>();
             services.AddTransient<IArticleService, ArticleService>();
             services.AddTransient<IForumService, ForumService>();
+            services.AddTransient<IPostService, PostService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

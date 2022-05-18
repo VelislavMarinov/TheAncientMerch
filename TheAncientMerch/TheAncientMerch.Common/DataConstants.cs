@@ -38,7 +38,9 @@
         public const int SculptureMaterialNameMaxLength = 50;
 
         // Post Model
+        public const int PostTitleMinLength = 4;
         public const int PostTitleMaxLength = 50;
+        public const int PostContentMinLength = 8;
         public const int PostContentMaxLength = 4094;
 
         // Sculpture
