@@ -18,6 +18,7 @@
     using TheAncientMerch.Data.Seeding;
     using TheAncientMerch.Services.Data;
     using TheAncientMerch.Services.Data.Article;
+    using TheAncientMerch.Services.Data.Comment;
     using TheAncientMerch.Services.Data.Forum;
     using TheAncientMerch.Services.Data.GreekDeity;
     using TheAncientMerch.Services.Data.Post;
@@ -76,6 +77,7 @@
             services.AddTransient<IArticleService, ArticleService>();
             services.AddTransient<IForumService, ForumService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

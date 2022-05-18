@@ -93,7 +93,7 @@
                                 @if (userId == reply.AddedByUserId || User.IsInRole("Administrator"))
                                 {
                                     <div class="text-right m-2">
-                                        <form method="post" asp-controller="" asp-action="" asp-route-commentId="" asp-route-postId="">
+                                        <form method="post" asp-controller="Comments" asp-action="Delete" asp-route-commentId="@reply.Id" asp-route-postId="@Model.Id">
                                             <button class="btn btn-outline-danger mt-3">Delete comment</button>
                                         </form>
                                     </div>
@@ -104,7 +104,7 @@
                 }
                 <div class="card-footer mt-2">
                     <div class="text-center">
-                        <a asp-controller="" asp-action="" asp-route-id="" class="btn btn-outline-secondary m-1">Reply</a>
+                        <a asp-controller="Comments" asp-action="Reply" asp-route-id="@Model.Id" class="btn btn-outline-secondary m-1">Reply</a>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@
         public const int ArticleCategoryNameMaxLength = 20;
 
         // Comment
+        public const int CommentContentMinLength = 3;
         public const int CommentContentMaxLength = 1000;
 
         // ForumCategory Model
@@ -28,7 +29,8 @@
         public const int HomeDecorNameMaxLegth = 100;
         public const int HomeDecorDescriptionMaxLength = 10000;
 
-        // origin for Sculpture and HomeDecor
+        // origin for Sculpture 
+        public const int OriginMinLegth = 4;
         public const int OriginMaxLegth = 50;
 
         // HomeDecorMaterial

@@ -54,6 +54,8 @@
 
             await this.ForumService.CreateCategoryAsync(model, userId);
 
+            this.TempData["Message"] = "Category created successfully.";
+
             return this.Redirect("/Forums/Categories");
         }
     }

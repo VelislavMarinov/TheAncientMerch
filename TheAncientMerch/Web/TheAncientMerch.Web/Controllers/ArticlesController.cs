@@ -85,6 +85,7 @@
             await this.ArticleService.CreateArticleAsync(model, userId);
 
             ArticlesController articlesController = this;
+
             articlesController.TempData["Message"] = "Article created successfully.";
 
             return this.RedirectToAction("All", "Articles");
@@ -133,6 +134,7 @@
             await this.ArticleService.EditArticleAsync(model, id, userId);
 
             ArticlesController articlesController = this;
+
             articlesController.TempData["Message"] = "Article updated successfully.";
 
             return this.Redirect($"/Articles/Article/{id}");

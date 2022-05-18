@@ -62,6 +62,7 @@
         public async Task<IActionResult> Delete(int id)
         {
             await this.PostService.DeletePostAsync(id);
+            this.TempData["Message"] = "Post deleted successfully.";
             return this.RedirectToAction("Categories", "Forums");
         }
     }

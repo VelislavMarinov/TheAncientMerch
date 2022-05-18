@@ -43,8 +43,10 @@
 
             await this.SculptureService.Create(model,userId);
 
+            this.TempData["Message"] = "Sculpture created successfully.";
+
             // TODo Redirect to recipi info page.
-            return this.Redirect("/");
+            return this.Redirect("/Sculptures/All");
         }
 
         public async Task<IActionResult> All([FromQuery] SculpturesQueryViewModel query)
@@ -85,6 +87,8 @@
             viewModel.Origin = model.Origin;
             viewModel.Price = model.Price;
             viewModel.UserId = model.UserId;
+
+
             return this.View(viewModel);
         }
 
@@ -98,6 +102,8 @@
             }
 
             await this.SculptureService.EditSculptureAsync(model, id);
+
+            this.TempData["Message"] = "Sculpture edited successfully.";
 
             return this.Redirect("/Sculptures/All");
         }

@@ -2,6 +2,17 @@
 @model DeityViewModel
 
 
+@{
+    this.ViewData["Title"] = Model.Name;
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
 <div class="container-fluid">
     <div class="card blogShort border">
         <div class="card-header border">

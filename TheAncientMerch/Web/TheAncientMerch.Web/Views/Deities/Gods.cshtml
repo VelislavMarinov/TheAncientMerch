@@ -1,10 +1,15 @@
 ﻿@using TheAncientMerch.Web.ViewModels.GreekDeitys
 @model IEnumerable<DeityViewModel>
 @{
-    ViewData["Title"] = "Gods";
+    this.ViewData["Title"] = "All Gods";
 }
 
-<h1 class="text-center">All gods</h1>
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
 
 
 
