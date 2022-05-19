@@ -36,7 +36,7 @@
 
         [Required]
         [MinLength(AddressMinLength)]
-        [MaxLength(AddressMinLength)]
+        [MaxLength(AddressMaxLength)]
         public string Address { get; set; }
 
         [Required]

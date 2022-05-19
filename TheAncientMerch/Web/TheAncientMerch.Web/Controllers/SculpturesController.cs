@@ -1,5 +1,6 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using TheAncientMerch.Services.Data.Sculpture;
@@ -7,8 +8,13 @@
     using TheAncientMerch.Web.ViewModels.GreekDeitys;
     using TheAncientMerch.Web.ViewModels.Sculptures;
 
+    [Authorize]
     public class SculpturesController : Controller
     {
+        public ISculptureMaterialService SculptureMaterialService { get; }
+
+        public ISculptureService SculptureService { get; }
+
         public SculpturesController(
             ISculptureMaterialService sculptureMaterialService,
             ISculptureService sculptureService
@@ -17,10 +23,6 @@
             this.SculptureMaterialService = sculptureMaterialService;
             this.SculptureService = sculptureService;
         }
-
-        public ISculptureMaterialService SculptureMaterialService { get; }
-
-        public ISculptureService SculptureService { get; }
 
         public async Task<IActionResult> Create()
         {
@@ -59,6 +61,11 @@
 
         public IActionResult Sculpture(int id)
         {
+            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            {
+                return this.BadRequest();
+            }
+
             var sculpture = this.SculptureService.GetSculptureById(id);
 
             return this.View(sculpture);
@@ -67,6 +74,11 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            {
+                return this.BadRequest();
+            }
+
             var currentUser = this.User.GetId();
             var viewModel = new EditSculptureViewModel();
             var model = this.SculptureService.GetSculptureById(id);
@@ -116,6 +128,37 @@
             return this.Redirect("/Sculptures/All");
         }
 
-        
+        [HttpGet]
+        public IActionResult Buy(int id)
+        {
+            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            {
+                return this.BadRequest();
+            }
+
+            var viewModel = new BuySculptureFormModel
+            {
+                SculptureModel = this.SculptureService.GetSculptureForBuyViewModel(id),
+            };
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Buy(BuySculptureFormModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                model.SculptureModel = this.SculptureService.GetSculptureForBuyViewModel(model.SculptureId);
+                return this.View(model);
+            }
+
+            var userId = this.User.GetId();
+
+            await this.SculptureService.BuySculpture(model, userId);
+
+            this.TempData["Message"] = "Thank you for your order! Delivery will be made within three working days!";
+
+            return this.Redirect("/Sculptures/All");
+        }
     }
 }

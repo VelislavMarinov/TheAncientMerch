@@ -6,7 +6,7 @@
 
     public class BuySculptureFormModel
     {
-        public BuySculptureViewModel SculptureViewModel { get; set; }
+        public BuySculptureViewModel SculptureModel { get; set; }
 
         public byte DeliveryPrice { get; set; } = 5;
 
@@ -36,7 +36,7 @@
 
         [Required]
         [MinLength(AddressMinLength, ErrorMessage = "The adress must have at least {1} letters")]
-        [MaxLength(AddressMinLength, ErrorMessage = "The adress must have maximum {1} letters")]
+        [MaxLength(AddressMaxLength, ErrorMessage = "The adress must have maximum {1} letters")]
         public string Address { get; set; }
 
         [Display(Name = "Card Name")]

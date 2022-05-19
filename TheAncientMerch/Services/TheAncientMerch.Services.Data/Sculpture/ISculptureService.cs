@@ -14,6 +14,12 @@
 
         Task<SculpturesQueryViewModel> GetAllSculptures(int id, int itemsPerPage, string material, int? sculptureType, int? color);
 
+        Task BuySculpture(BuySculptureFormModel model, string userId);
+
+        bool ChekIfSculptureIdIsValid(int id);
+
+        BuySculptureViewModel GetSculptureForBuyViewModel(int id);
+
         IEnumerable<SculptureViewModel> GetAllUserSculptures();
 
         int GetCount();
