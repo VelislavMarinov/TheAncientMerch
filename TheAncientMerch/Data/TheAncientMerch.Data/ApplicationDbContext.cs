@@ -34,6 +34,8 @@
 
         public DbSet<SculptureMaterial> SculptureMaterials { get; set; }
 
+        public DbSet<Payment> Payments { get; set; }
+
         public DbSet<Article> Articles { get; set; }
 
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
@@ -90,6 +92,11 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<Sculpture>()
+            .HasOne(a => a.Payment)
+            .WithOne(b => b.Sculpture)
+            .HasForeignKey<Payment>(b => b.SculptureId);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

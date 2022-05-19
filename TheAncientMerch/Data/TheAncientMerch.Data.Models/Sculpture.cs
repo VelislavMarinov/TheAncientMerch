@@ -47,6 +47,12 @@
 
         public virtual ApplicationUser AddedByUser { get; set; }
 
+        public bool IsSold { get; set; }
+
+        public int PaymentId { get; set; }
+
+        public virtual Payment Payment { get; set; }
+
         [Required]
         [MaxLength(OriginMaxLegth)]
         public string Origin { get; set; }

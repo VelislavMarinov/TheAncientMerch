@@ -11,7 +11,7 @@
     public class CreateSculptureInputModel
     {
         [Required(ErrorMessage = "The field is required")]
-        [MinLength(SculptureNameMinLegth, ErrorMessage = "The title must have at least {1} letters")]
+        [MinLength(SculptureNameMinLegth, ErrorMessage = "The name must have at least {1} letters")]
         [MaxLength(SculptureNameMaxLegth, ErrorMessage = "The name must have maximum {1} letters")]
         public string Name { get; set; }
 
@@ -25,19 +25,19 @@
         public string ImageUrl { get; set; }
 
         [Required(ErrorMessage = "The field is required")]
-        [Range(5, 200)]
+        [Range(5, 300)]
         public decimal Height { get; set; }
 
         [Required(ErrorMessage = "The field is required")]
-        [Range(5, 100)]
+        [Range(5, 150)]
         public decimal Width { get; set; }
 
-        [Range(0,30)]
+        [Range(0, 30)]
         public decimal Weigth { get; set; }
 
         [Required(ErrorMessage = "The field is required")]
-        [MinLength(SculptureDescriptionMinLength, ErrorMessage = "The title must have at least {1} letters")]
-        [MaxLength(SculptureDescriptionMaxLength, ErrorMessage = "The name must have maximum {1} letters")]
+        [MinLength(SculptureDescriptionMinLength, ErrorMessage = "The description must have at least {1} letters")]
+        [MaxLength(SculptureDescriptionMaxLength, ErrorMessage = "The description must have maximum {1} letters")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "The field is required")]
@@ -55,8 +55,8 @@
         public SculptureType SculptureType { get; set; }
 
         [Required(ErrorMessage = "The field is required")]
-        [MinLength(OriginMinLegth, ErrorMessage = "The title must have at least {1} letters")]
-        [MaxLength(OriginMaxLegth, ErrorMessage = "The name must have maximum {1} letters")]
+        [MinLength(OriginMinLegth, ErrorMessage = "The origin must have at least {1} letters")]
+        [MaxLength(OriginMaxLegth, ErrorMessage = "The origin must have maximum {1} letters")]
         public string Origin { get; set; }
     }
 }

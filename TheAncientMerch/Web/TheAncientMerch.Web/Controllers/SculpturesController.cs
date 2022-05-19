@@ -115,5 +115,7 @@
             this.TempData["Message"] = "Sculpture deleted successfully.";
             return this.Redirect("/Sculptures/All");
         }
+
+        
     }
 }

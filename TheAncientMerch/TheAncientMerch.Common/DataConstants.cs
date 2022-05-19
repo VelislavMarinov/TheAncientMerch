@@ -5,6 +5,7 @@
         // Articles
         public const int ArticleTitleMinLength = 4;
         public const int ArticleTitleMaxLength = 64;
+
         public const int ArticleContentMinLength = 20;
         public const int ArticleContentMaxLength = 10000;
 
@@ -18,6 +19,7 @@
         // ForumCategory Model
         public const int ForumCategoryNameMinLength = 4;
         public const int ForumCategoryNameMaxLength = 50;
+
         public const int ForumCategoryDescriptionMinLength = 8;
         public const int ForumCategoryDescriptionMaxLength = 200;
 
@@ -42,18 +44,39 @@
         // Post Model
         public const int PostTitleMinLength = 4;
         public const int PostTitleMaxLength = 50;
+
         public const int PostContentMinLength = 8;
         public const int PostContentMaxLength = 4094;
 
         // Sculpture
         public const int SculptureNameMinLegth = 4;
         public const int SculptureNameMaxLegth = 100;
+
         public const int SculptureDescriptionMinLength = 20;
         public const int SculptureDescriptionMaxLength = 10000;
 
         // User: Username
         public const int UserNameMinLength = 4;
         public const int UserNameMaxLength = 20;
+
+        // For buy Sculputure form model
+        public const int FirstNameMinLength = 4;
+        public const int FirstNameMaxLength = 30;
+
+        public const int LastNameMinLength = 4;
+        public const int LastNameMaxLength = 30;
+
+        public const int AddressMinLength = 5;
+        public const int AddressMaxLength = 75;
+
+        public const int CardNameMinLength = 4;
+        public const int CardNameMaxLength = 30;
+
+        public const int CardNumberMinLength = 6;
+        public const int CardNumberMaxLength = 20;
+
+        public const int ExpirationMinLength = 5;
+        public const int ExpirationMaxLength = 10;
 
     }
 }
