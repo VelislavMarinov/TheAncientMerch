@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using TheAncientMerch.Web.ViewModels.Articles;
 
     public interface IArticleService

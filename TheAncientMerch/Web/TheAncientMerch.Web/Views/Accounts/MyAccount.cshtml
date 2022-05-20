@@ -1,4 +1,6 @@
-﻿
+﻿@using TheAncientMerch.Web.ViewModels.Account
+@model AccountViewModel
+
 @{
     this.ViewData["Title"] = "My Account";
 }
@@ -22,9 +24,9 @@
     					<div class="card-header border">
                             <div class="row-md-4 mt-2">
                                 <ul>
-                                    <li><strong>Username: </strong></li>
-                                    <li><strong>Email: </strong>  </li>
-                                    <li><strong>Created on: </strong></li>
+                                    <li><strong>Username: @Model.Username </strong></li>
+                                    <li><strong>Email: @Model.Email </strong>  </li>
+                                    <li><strong>Created on: @Model.CreatedOn </strong></li>
                                     
                                 </ul>
                             </div>

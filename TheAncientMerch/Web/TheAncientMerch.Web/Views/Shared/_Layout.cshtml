@@ -34,6 +34,16 @@
                         {
                             <div class="dropdown">
                                 <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
+                                    Account
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item " asp-area="" asp-controller="Accounts" asp-action="MyAccount" asp-route-id="" >My Account</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Payments history</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">My Sculptures</a>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn" type="button" id="dropdownMenuButton"  data-toggle="dropdown">
                                     Deities
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
