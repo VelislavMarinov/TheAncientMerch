@@ -1,15 +1,16 @@
 ﻿@using TheAncientMerch.Web.ViewModels.Search
-@model SearchArticleFormModel
+@model SearchGreekDeityFormModel
 
 @{
-    this.ViewData["Title"] = "Search for an article";
+    this.ViewData["Title"] = "Search for deity";
 }
 
 
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/Articles/All">All articles</a></li>
+        <li class="breadcrumb-item"><a href="/Deities/Gods">All Gods</a></li>
+        <li class="breadcrumb-item"><a href="/Deities/Titans">All Titans</a></li>
         <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
     </ol>
 </nav>
@@ -29,13 +30,31 @@
         <div class="offset-lg-2 col-lg-8 col-sm-12 offset-xl-3 col-xl-6">
             <form method="post">
                 <div class="form-group">
-                    <label asp-for="Keyword">Search for an article title using a keyword</label>
-                    <input asp-for="Keyword" class="form-control" placeholder="Enter a word" />
+                    <label asp-for="Name">Search for an article title using a keyword</label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter a word" />
                 </div>
                 <div class="text-center pt-2">
                     <input class="btn btn-outline-secondary" type="submit" value="Search" />
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card blogShort border">
+        <div class="card-header border">
+                <h1 class = "text-center">@Model.Deity.Name</h1>
+        </div>
+        <div class="card-body row-md-12">
+             <div class="embed-responsive embed-responsive-16by9">
+                 <iframe class="embed-responsive-item" src="@Model.Deity.VideoUrl" allowfullscreen></iframe>
+             </div>
+        </div>
+        <div class="card-footer border row-md-4 mt-2">
+            <article>
+                @Model.Deity.Description
+            </article>
         </div>
     </div>
 </div>

@@ -47,14 +47,48 @@
             return articlesView;
         }
 
-        public IEnumerable<DeityViewModel> SearchGreekDeityByKeyword(string username)
+        public DeityViewModel SearchGreekDeityByUsername(string username)
         {
-            throw new System.NotImplementedException();
+            var deitysView = this.greekDeityRepository
+               .All()
+               .Where(x => x.Name == username)
+               .Select(x => new DeityViewModel
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Description = x.Description,
+                   ImageUrl = x.ImageUrl,
+                   VideoUrl = x.VideoUrl,
+               })
+               .FirstOrDefault();
+
+            return deitysView;
         }
 
         public IEnumerable<SculptureViewModel> SearcSculptureByKeyword(string keyword)
         {
-            throw new System.NotImplementedException();
+            var sculpturesView = this.sculptureRepository
+                .All()
+                .Where(x => x.Name.Contains(keyword))
+                .Select(x => new SculptureViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Color = x.Color.ToString(),
+                    Material = x.Material.Name,
+                    Description = x.Description,
+                    Origin = x.Origin,
+                    Width = x.Width,
+                    Height = x.Height,
+                    Weigth = x.Weigth,
+                    Price = x.Price,
+                    ImageUrl = x.ImageUrl,
+                    SculptureType = x.SculptureType.ToString(),
+                    UserId = x.AddedByUserId,
+                })
+                .ToList();
+
+            return sculpturesView;
         }
     }
 }

@@ -13,6 +13,6 @@
 
         IEnumerable<SculptureViewModel> SearcSculptureByKeyword(string keyword);
 
-        IEnumerable<DeityViewModel> SearchGreekDeityByKeyword(string username);
+        DeityViewModel SearchGreekDeityByUsername(string username);
     }
 }
