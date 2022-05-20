@@ -1,19 +1,26 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
+    using System.Collections.Generic;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
+
     using TheAncientMerch.Services.Data.Accounts;
+    using TheAncientMerch.Services.Data.Sculpture;
     using TheAncientMerch.Web.ViewModels.Account;
 
     [Authorize]
     public class AccountsController : Controller
     {
         private readonly IAccountService accountService;
+        private readonly ISculptureService sculptureService;
 
-        public AccountsController(IAccountService accountService)
+        public AccountsController(
+            IAccountService accountService,
+            ISculptureService sculptureService)
         {
             this.accountService = accountService;
+            this.sculptureService = sculptureService;
         }
 
         [HttpGet]
@@ -46,6 +53,14 @@
             }
 
             return this.Redirect($"/Accounts/MyAccount");
+        }
+
+        [HttpGet]
+        public IActionResult MySculptures()
+        {
+            var userId = this.User.GetId();
+            var sculpturesView = this.sculptureService.GetAllUserSculptures(userId);
+            return this.View(sculpturesView);
         }
     }
 }

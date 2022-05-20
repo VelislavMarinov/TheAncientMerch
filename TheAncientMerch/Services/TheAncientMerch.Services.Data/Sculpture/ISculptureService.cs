@@ -20,7 +20,7 @@
 
         BuySculptureViewModel GetSculptureForBuyViewModel(int id);
 
-        IEnumerable<SculptureViewModel> GetAllUserSculptures();
+        IEnumerable<SculptureViewModel> GetAllUserSculptures(string userId);
 
         int GetCount();
 

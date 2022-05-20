@@ -141,9 +141,30 @@
             };
         }
 
-        public IEnumerable<SculptureViewModel> GetAllUserSculptures()
+        public IEnumerable<SculptureViewModel> GetAllUserSculptures(string userId)
         {
-            throw new System.NotImplementedException();
+            var sculptures = this.SculptureRepository
+                .All()
+                .Where(x => x.AddedByUserId == userId)
+                .Select(x => new SculptureViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Color = x.Color.ToString(),
+                    Material = x.Material.Name,
+                    Description = x.Description,
+                    Origin = x.Origin,
+                    Width = x.Width,
+                    Height = x.Height,
+                    Weigth = x.Weigth,
+                    Price = x.Price,
+                    ImageUrl = x.ImageUrl,
+                    SculptureType = x.SculptureType.ToString(),
+                    UserId = x.AddedByUserId,
+                })
+                .ToList();
+
+            return sculptures;
         }
 
         public int GetCount()
