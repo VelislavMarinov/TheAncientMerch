@@ -13,8 +13,7 @@
     public class SculptureMaterialService : ISculptureMaterialService
     {
         public SculptureMaterialService(
-            IRepository<SculptureMaterial> sculptureMaterialRepository
-            )
+            IRepository<SculptureMaterial> sculptureMaterialRepository)
         {
             this.SculptureMaterialRepository = sculptureMaterialRepository;
         }

@@ -25,6 +25,7 @@
     using TheAncientMerch.Services.Data.Post;
     using TheAncientMerch.Services.Data.Sculpture;
     using TheAncientMerch.Services.Data.SculptureMaterial;
+    using TheAncientMerch.Services.Data.Search;
     using TheAncientMerch.Services.Mapping;
     using TheAncientMerch.Services.Messaging;
     using TheAncientMerch.Web.ViewModels;
@@ -80,6 +81,7 @@
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<ISearchService, SearchService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
