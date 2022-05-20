@@ -8,6 +8,7 @@
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -38,7 +39,7 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item " asp-area="" asp-controller="Accounts" asp-action="MyAccount" asp-route-id="" >My Account</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Payments history</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Accounts" asp-action="PaymentsHistory">Payments history</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">My Sculptures</a>
                                 </div>
                             </div>

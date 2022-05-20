@@ -1,0 +1,71 @@
+﻿@using TheAncientMerch.Web.ViewModels.Account
+
+@model IEnumerable<PaymentViewModel>
+
+@{
+    this.ViewData["Title"] = "My Payments history";
+}
+
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Accounts/MyAccount">My Account</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+
+<div class="container">
+   <div class="mt-3">
+    <div class="text-center">
+          <a asp-controller="Accounts" asp-action="PaymentsHistory" asp-route-route="Bought" class="btn btn-outline-secondary m-4">Bought sculptures</a>
+          <a asp-controller="Accounts" asp-action="PaymentsHistory" asp-route-route="Sold" class="btn btn-outline-secondary m-4">Sold sculptures</a>
+    </div>
+    @foreach(var paymentInfo in Model)
+    {
+      <div class="border-info d-style btn btn-brc-tp border-2 bgc-white btn-outline-purple btn-h-outline-purple btn-a-outline-purple w-100 my-2 py-3 shadow-sm">
+        <div class="d-flex w-100 justify-content-between row align-items-center">
+          <div class="col-12 col-md-4">
+            <h4 class="pt-3 text-170 text-600 text-purple-d1 letter-spacing">
+              Sculpture name: @paymentInfo.SculptureName
+            </h4>
+            <h6>Sculpture created on: @paymentInfo.SculptureCreatedOn</h6>
+          </div>
+
+          <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+            <li>
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span>
+                <span class="text-110">Seller: @paymentInfo.SellerName</span>
+              </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+               Buyer: @paymentInfo.BuyerName
+            </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+               Sculpture bought date: @paymentInfo.SoldDate
+            </span>
+            </li>
+
+            <li class="mt-25">
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span class="text-110">
+               Sold price: @paymentInfo.SculpturePrice (USD)
+            </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+     }
+    </div>
+</div>
