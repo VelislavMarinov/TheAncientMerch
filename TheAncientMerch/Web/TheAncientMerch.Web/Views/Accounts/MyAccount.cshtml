@@ -1,0 +1,89 @@
+﻿
+@{
+    this.ViewData["Title"] = "My Account";
+}
+
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><strong>@this.ViewData["Title"]</strong></li>
+    </ol>
+</nav>
+
+
+<div class="container border-dark">
+    <div class="row gutters">
+    	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    		<div class="card">
+    			<div class="card-body p-0">
+    				<div class="invoice-container">
+    					<div class="card-header border">
+                            <div class="row-md-4 mt-2">
+                                <ul>
+                                    <li><strong>Username: </strong></li>
+                                    <li><strong>Email: </strong>  </li>
+                                    <li><strong>Created on: </strong></li>
+                                    
+                                </ul>
+                            </div>
+                          </div>
+    
+    					<div class="invoice-body">
+    						<div class="row gutters">
+    							<div class="col-lg-12 col-md-12 col-sm-12">
+    								<div class="text-black text-center">
+    									<h2> My sculptures </h2>
+    								</div>
+    							</div>
+    						</div>
+                          <div class="row d-flex justify-content-center  row-cols-1 row-cols-md-4"> 
+                            <div class="text-center col mb-4  col-xl-4 col-5 mt-4" style="width: 18rem;">
+                                <div class="card border-dark">
+                                     <div class="card-header col-md border text-center">
+                                         <a asp-controller="" asp-action="" >
+                                        <img src="https://i.pinimg.com/736x/cc/8f/e8/cc8fe827950fcafcc09d8ee50314954b.jpg" width="200" height="250"  class="card-img-top">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Sculptures for sale</h5>
+                                   </div>
+                               </div>
+                            </div>
+                          
+                            <div class="text-center col mb-4  col-xl-4 col-5 mt-4" style="width: 18rem;">
+                                <div class="card border-dark">
+                                     <div class="card-header col-md border text-center">
+                                         <a asp-controller="" asp-action="" >
+                                        <img src="https://i.pinimg.com/originals/8a/75/1e/8a751e0ce768146353634bbd80ac0a42.jpg" width="200" height="250"  class="card-img-top">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Buyed sculptures</h5>
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="text-center col mb-4  col-xl-4 col-5 mt-4" style="width: 18rem;">
+                                <div class="card border-dark">
+                                     <div class="card-header col-md border text-center">
+                                         <a asp-controller="" asp-action="" >
+                                        <img src="https://i.pinimg.com/originals/fe/7b/75/fe7b75de4a1de7d506be96f01abea45c.jpg" width="200" height="250"  class="card-img-top">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Sold sculptures</h5>
+                                   </div>
+                               </div>
+                            </div>
+                           </div>
+
+    
+    					</div>
+    
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
