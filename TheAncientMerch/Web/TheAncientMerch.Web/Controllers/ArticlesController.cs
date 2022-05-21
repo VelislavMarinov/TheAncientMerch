@@ -139,5 +139,10 @@
 
             return this.Redirect($"/Articles/Article/{id}");
         }
+
+        public IActionResult Test()
+        {
+            return this.View();
+        }
     }
 }

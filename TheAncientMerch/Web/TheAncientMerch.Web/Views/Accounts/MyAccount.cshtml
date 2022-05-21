@@ -44,12 +44,12 @@
                             <div class="text-center col mb-4  col-xl-4 col-5 mt-4" style="width: 18rem;">
                                 <div class="card border-dark">
                                      <div class="card-header col-md border text-center">
-                                         <a asp-controller="" asp-action="" >
+                                         <a asp-controller="Accounts" asp-action="MySculptures" >
                                         <img src="https://i.pinimg.com/736x/cc/8f/e8/cc8fe827950fcafcc09d8ee50314954b.jpg" width="200" height="250"  class="card-img-top">
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Sculptures for sale</h5>
+                                       <h5 class="card-title"> <a asp-controller="Accounts" asp-action="MySculptures">Sculptures for sale</a></h5>
                                    </div>
                                </div>
                             </div>
@@ -62,7 +62,7 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Buyed sculptures</h5>
+                                       <h5 class="card-title"> <a asp-controller="Accounts" asp-action="PaymentsHistory" asp-route-route="Bought">Buyed sculptures</a></h5>
                                    </div>
                                </div>
                             </div>
@@ -74,7 +74,7 @@
                                         </a>
                                     </div>
                                     <div class="card-body">
-                                       <h5 class="card-title"> <a asp-action="" asp-route-id=""></a>Sold sculptures</h5>
+                                       <h5 class="card-title"> <a asp-controller="Accounts" asp-action="PaymentsHistory" asp-route-route="Sold">Sold sculptures</a></h5>
                                    </div>
                                </div>
                             </div>
