@@ -1,7 +1,13 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+navbar {
+    color: #fff;
+}
+
 a.navbar-brand {
+
     white-space: normal;
     text-align: center;
     word-break: break-all;
@@ -161,3 +167,6 @@ body {
     .counter__item__text .icon {
         color: #00FFFF;
     }
+
+
+

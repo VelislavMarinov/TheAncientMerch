@@ -84,6 +84,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item " asp-area="" asp-controller="Forums" asp-action="Categories" asp-route-id="" >Forum</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Forums" asp-action="Create">Create Category</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Posts" asp-action="Create">Create Post</a>
                                 </div>
                             </div>
                         }
@@ -104,6 +105,7 @@
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
