@@ -72,7 +72,7 @@
                     <hr/>
                     <li>
                         
-                        @if (userId == Model.UserId)
+                        @if (userId == Model.UserId || User.IsInRole("Administrator"))
                         {
                             <div class="mb-1">
                               <div class="text-center pt-2">

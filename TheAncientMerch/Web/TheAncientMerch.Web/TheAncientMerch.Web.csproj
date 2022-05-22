@@ -43,4 +43,10 @@
     <ProjectReference Include="..\TheAncientMerch.Web.Infrastructure\TheAncientMerch.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\TheAncientMerch.Web.ViewModels\TheAncientMerch.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\logo\AncientLogo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
