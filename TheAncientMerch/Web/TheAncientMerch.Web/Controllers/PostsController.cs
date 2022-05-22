@@ -10,17 +10,17 @@
     [Authorize]
     public class PostsController : Controller
     {
-        public IPostService PostService { get; }
+        private readonly IPostService postService;
 
         public PostsController(IPostService postService)
         {
-            this.PostService = postService;
+            this.postService = postService;
         }
 
         [HttpGet]
         public IActionResult Post(int id)
         {
-            var viewModel = this.PostService.GetPostById(id);
+            var viewModel = this.postService.GetPostById(id);
 
             if (viewModel == null)
             {
@@ -35,7 +35,7 @@
         {
             var viewModel = new CreatePostsInputViewModel
             {
-                Categories = this.PostService.GetForumCategories(),
+                Categories = this.postService.GetForumCategories(),
             };
 
             return this.View(viewModel);
@@ -46,12 +46,12 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.Categories = this.PostService.GetForumCategories();
+                model.Categories = this.postService.GetForumCategories();
                 return this.View(model);
             }
 
             var userId = this.User.GetId();
-            var postId = await this.PostService.CreatePostAsync(model, userId);
+            var postId = await this.postService.CreatePostAsync(model, userId);
 
             this.TempData["Message"] = "Post created successfully.";
 
@@ -61,7 +61,7 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            await this.PostService.DeletePostAsync(id);
+            await this.postService.DeletePostAsync(id);
             this.TempData["Message"] = "Post deleted successfully.";
             return this.RedirectToAction("Categories", "Forums");
         }

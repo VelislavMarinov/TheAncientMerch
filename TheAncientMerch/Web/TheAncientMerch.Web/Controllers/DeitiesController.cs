@@ -8,28 +8,28 @@
     [Authorize]
     public class DeitiesController : Controller
     {
+        private readonly IGreekDeityService greekDeityService;
+
         public DeitiesController(IGreekDeityService greekDeityService)
         {
-            this.GreekDeityService = greekDeityService;
+            this.greekDeityService = greekDeityService;
         }
-
-        public IGreekDeityService GreekDeityService { get; }
 
         public IActionResult Gods()
         {
-            var view = this.GreekDeityService.GetAllGods();
+            var view = this.greekDeityService.GetAllGods();
             return this.View(view);
         }
 
         public IActionResult Titans()
         {
-            var view = this.GreekDeityService.GetAllTitans();
+            var view = this.greekDeityService.GetAllTitans();
             return this.View(view);
         }
 
         public IActionResult Deity(int id)
         {
-            var god = this.GreekDeityService.GetDeity(id);
+            var god = this.greekDeityService.GetDeity(id);
 
             return this.View(god);
         }

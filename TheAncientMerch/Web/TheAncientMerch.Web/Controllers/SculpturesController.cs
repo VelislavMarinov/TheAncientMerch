@@ -1,8 +1,9 @@
 ﻿namespace TheAncientMerch.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
     using TheAncientMerch.Services.Data.Sculpture;
     using TheAncientMerch.Services.Data.SculptureMaterial;
     using TheAncientMerch.Web.ViewModels.GreekDeitys;
@@ -11,24 +12,24 @@
     [Authorize]
     public class SculpturesController : Controller
     {
-        public ISculptureMaterialService SculptureMaterialService { get; }
+        private readonly ISculptureMaterialService sculptureMaterialService;
 
-        public ISculptureService SculptureService { get; }
+        private readonly ISculptureService sculptureService;
 
         public SculpturesController(
             ISculptureMaterialService sculptureMaterialService,
             ISculptureService sculptureService
             )
         {
-            this.SculptureMaterialService = sculptureMaterialService;
-            this.SculptureService = sculptureService;
+            this.sculptureMaterialService = sculptureMaterialService;
+            this.sculptureService = sculptureService;
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             var viewModel = new CreateSculptureInputModel
             {
-                Materials = this.SculptureMaterialService.GetAllMaterials(),
+                Materials = this.sculptureMaterialService.GetAllMaterials(),
             };
             return this.View(viewModel);
         }
@@ -43,30 +44,29 @@
 
             var userId = this.User.GetId();
 
-            await this.SculptureService.Create(model,userId);
+            await this.sculptureService.Create(model,userId);
 
             this.TempData["Message"] = "Sculpture created successfully.";
 
-            // TODo Redirect to recipi info page.
             return this.Redirect("/Sculptures/All");
         }
 
         public async Task<IActionResult> All([FromQuery] SculpturesQueryViewModel query)
         {
             var itemsPerPage = 6;
-            var sculpturesQuery = await this.SculptureService.GetAllSculptures(query.PageNumber, itemsPerPage, query.Material, query.SculptureType, query.Color);
+            var sculpturesQuery = await this.sculptureService.GetAllSculptures(query.PageNumber, itemsPerPage, query.Material, query.SculptureType, query.Color);
 
             return this.View(sculpturesQuery);
         }
 
         public IActionResult Sculpture(int id)
         {
-            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            if (!this.sculptureService.ChekIfSculptureIdIsValid(id))
             {
                 return this.BadRequest();
             }
 
-            var sculpture = this.SculptureService.GetSculptureById(id);
+            var sculpture = this.sculptureService.GetSculptureById(id);
 
             return this.View(sculpture);
         }
@@ -74,14 +74,14 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            if (!this.sculptureService.ChekIfSculptureIdIsValid(id))
             {
                 return this.BadRequest();
             }
 
             var currentUser = this.User.GetId();
             var viewModel = new EditSculptureViewModel();
-            var model = this.SculptureService.GetSculptureById(id);
+            var model = this.sculptureService.GetSculptureById(id);
 
             if (currentUser != model.UserId)
             {
@@ -95,7 +95,7 @@
             viewModel.Weigth = model.Weigth;
             viewModel.Height = model.Height;
             viewModel.Width = model.Width;
-            viewModel.Materials = this.SculptureMaterialService.GetAllMaterials();
+            viewModel.Materials = this.sculptureMaterialService.GetAllMaterials();
             viewModel.Origin = model.Origin;
             viewModel.Price = model.Price;
             viewModel.UserId = model.UserId;
@@ -109,11 +109,11 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.Materials = this.SculptureMaterialService.GetAllMaterials();
+                model.Materials = this.sculptureMaterialService.GetAllMaterials();
                 return this.View(model);
             }
 
-            await this.SculptureService.EditSculptureAsync(model, id);
+            await this.sculptureService.EditSculptureAsync(model, id);
 
             this.TempData["Message"] = "Sculpture edited successfully.";
 
@@ -123,7 +123,7 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            await this.SculptureService.DeleteSculptureAsync(id);
+            await this.sculptureService.DeleteSculptureAsync(id);
             this.TempData["Message"] = "Sculpture deleted successfully.";
             return this.Redirect("/Sculptures/All");
         }
@@ -131,14 +131,14 @@
         [HttpGet]
         public IActionResult Buy(int id)
         {
-            if (!this.SculptureService.ChekIfSculptureIdIsValid(id))
+            if (!this.sculptureService.ChekIfSculptureIdIsValid(id))
             {
                 return this.BadRequest();
             }
 
             var viewModel = new BuySculptureFormModel
             {
-                SculptureModel = this.SculptureService.GetSculptureForBuyViewModel(id),
+                SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(id),
             };
             return this.View(viewModel);
         }
@@ -148,13 +148,13 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.SculptureModel = this.SculptureService.GetSculptureForBuyViewModel(model.SculptureId);
+                model.SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(model.SculptureId);
                 return this.View(model);
             }
 
             var userId = this.User.GetId();
 
-            await this.SculptureService.BuySculpture(model, userId);
+            await this.sculptureService.BuySculpture(model, userId);
 
             this.TempData["Message"] = "Thank you for your order! Delivery will be made within three working days!";
 

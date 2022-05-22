@@ -10,19 +10,19 @@
     [Authorize]
     public class ForumsController : Controller
     {
+        private readonly IForumService forumService;
+
         public ForumsController(IForumService forumService)
         {
-            this.ForumService = forumService;
+            this.forumService = forumService;
         }
-
-        public IForumService ForumService { get; }
 
         [HttpGet]
         public IActionResult Categories()
         {
             var viewModel = new AllCategoriesViewModel()
             {
-                Categories = this.ForumService.GetAllCategories(),
+                Categories = this.forumService.GetAllCategories(),
             };
 
             return this.View(viewModel);
@@ -31,7 +31,7 @@
         [HttpGet]
         public IActionResult Category(string id)
         {
-            var viewModel = this.ForumService.GetCategoryByName(id);
+            var viewModel = this.forumService.GetCategoryByName(id);
 
             return this.View(viewModel);
         }
@@ -52,7 +52,7 @@
 
             var userId = this.User.GetId();
 
-            await this.ForumService.CreateCategoryAsync(model, userId);
+            await this.forumService.CreateCategoryAsync(model, userId);
 
             this.TempData["Message"] = "Category created successfully.";
 

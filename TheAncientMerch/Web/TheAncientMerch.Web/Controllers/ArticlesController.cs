@@ -11,19 +11,19 @@
     [Authorize]
     public class ArticlesController : Controller
     {
+        private readonly IArticleService articleService;
+
         public ArticlesController(
             IArticleService articleService)
         {
-            this.ArticleService = articleService;
+            this.articleService = articleService;
         }
-
-        public IArticleService ArticleService { get; }
 
         [HttpGet]
         public IActionResult Categories(string id = "Categories")
         {
             id = id.ToLower();
-            var categories = this.ArticleService.GetAllCategories();
+            var categories = this.articleService.GetAllCategories();
 
             // for a spacific category.
             foreach (var category in categories)
@@ -33,8 +33,8 @@
                {
                     var viewModel = new AllArticlesViewModel
                     {
-                        Articles = this.ArticleService.GetArticlesByCategoryId(category.Id),
-                        ItemsCount = this.ArticleService.ArticlesCount(),
+                        Articles = this.articleService.GetArticlesByCategoryId(category.Id),
+                        ItemsCount = this.articleService.ArticlesCount(),
                     };
                     return this.View($"{id}", viewModel);
                }
@@ -51,9 +51,9 @@
             var view = new AllArticlesViewModel
             {
                 PageNumber = id,
-                Articles = this.ArticleService.GetAllArticles(id, itemsPerPage),
+                Articles = this.articleService.GetAllArticles(id, itemsPerPage),
                 ItemsPerPage = itemsPerPage,
-                ItemsCount = this.ArticleService.ArticlesCount(),
+                ItemsCount = this.articleService.ArticlesCount(),
             };
 
             return this.View(view);
@@ -64,7 +64,7 @@
         {
             var viewModel = new CreateArticleInputModel
             {
-                Categories = this.ArticleService.GetAllCategories(),
+                Categories = this.articleService.GetAllCategories(),
             };
 
             return this.View(viewModel);
@@ -75,14 +75,14 @@
         {
             if (!this.ModelState.IsValid)
             {
-                model.Categories = this.ArticleService.GetAllCategories();
+                model.Categories = this.articleService.GetAllCategories();
 
                 return this.View(model);
             }
 
             var userId = this.User.GetId();
 
-            await this.ArticleService.CreateArticleAsync(model, userId);
+            await this.articleService.CreateArticleAsync(model, userId);
 
             ArticlesController articlesController = this;
 
@@ -94,14 +94,14 @@
         [HttpGet]
         public IActionResult Article(int id)
         {
-            var article = this.ArticleService.GetArticleById(id);
+            var article = this.articleService.GetArticleById(id);
             return this.View(article);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            await this.ArticleService.DeleteArticleAsync(id);
+            await this.articleService.DeleteArticleAsync(id);
             this.TempData["Message"] = "Article deleted successfully.";
             return this.RedirectToAction("All", "Articles");
         }
@@ -110,11 +110,11 @@
         public IActionResult Edit(int id)
         {
             var viewModel = new EditArticleInputModel();
-            var currentArticle = this.ArticleService.GetArticleById(id);
+            var currentArticle = this.articleService.GetArticleById(id);
 
             viewModel.Title = currentArticle.Title;
             viewModel.Content = currentArticle.Content;
-            viewModel.Categories = this.ArticleService.GetAllCategories();
+            viewModel.Categories = this.articleService.GetAllCategories();
 
             return this.View(viewModel);
         }
@@ -126,12 +126,12 @@
 
             if (!this.ModelState.IsValid)
             {
-                model.Categories = this.ArticleService.GetAllCategories();
+                model.Categories = this.articleService.GetAllCategories();
 
                 return this.View(model);
             }
 
-            await this.ArticleService.EditArticleAsync(model, id, userId);
+            await this.articleService.EditArticleAsync(model, id, userId);
 
             ArticlesController articlesController = this;
 
