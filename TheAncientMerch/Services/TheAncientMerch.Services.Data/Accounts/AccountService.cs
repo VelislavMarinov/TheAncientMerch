@@ -12,7 +12,8 @@
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly IDeletableEntityRepository<Payment> paymentRepository;
 
-        public AccountService(IDeletableEntityRepository<ApplicationUser> userRepository,
+        public AccountService(
+            IDeletableEntityRepository<ApplicationUser> userRepository,
             IDeletableEntityRepository<Payment> paymentRepository)
         {
             this.userRepository = userRepository;

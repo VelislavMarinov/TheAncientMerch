@@ -10,17 +10,17 @@
 
     public class ForumService : IForumService
     {
+        private readonly IDeletableEntityRepository<ForumCategory> forumRepository;
+
+        private readonly IDeletableEntityRepository<Post> postRepository;
+
         public ForumService(
             IDeletableEntityRepository<ForumCategory> forumRepository,
             IDeletableEntityRepository<Post> postRepository)
         {
-            this.ForumRepository = forumRepository;
-            this.PostRepository = postRepository;
+            this.forumRepository = forumRepository;
+            this.postRepository = postRepository;
         }
-
-        public IDeletableEntityRepository<ForumCategory> ForumRepository { get; }
-
-        public IDeletableEntityRepository<Post> PostRepository { get; }
 
         public async Task CreateCategoryAsync(CreateForumInputViewModel mode, string userId)
         {
@@ -31,19 +31,19 @@
                 AddedByUserId = userId,
             };
 
-            await this.ForumRepository.AddAsync(category);
-            await this.ForumRepository.SaveChangesAsync();
+            await this.forumRepository.AddAsync(category);
+            await this.forumRepository.SaveChangesAsync();
         }
 
         public IEnumerable<CategoryViewModel> GetAllCategories()
         {
-            var categories = this.ForumRepository
+            var categories = this.forumRepository
                 .All()
                 .Select(x => new CategoryViewModel
                 {
                     Name = x.Name,
                     Description = x.Description,
-                    PostsCount = this.PostRepository.All().Where(p => p.CategoryId == x.Id).Count(),
+                    PostsCount = this.postRepository.All().Where(p => p.CategoryId == x.Id).Count(),
 
                 })
                 .ToList();
@@ -53,13 +53,13 @@
 
         public CategoryViewModel GetCategoryByName(string name)
         {
-            var viewModel = this.ForumRepository
+            var viewModel = this.forumRepository
                .All()
                .Where(x => x.Name.Replace(" ", "-") == name.Replace(" ", "-"))
                .Select(x => new CategoryViewModel {
                    Description = x.Description,
                    Name = x.Name,
-                   Posts = this.PostRepository
+                   Posts = this.postRepository
                      .All()
                      .Where(p => p.CategoryId == x.Id)
                      .Select(p => new CategoryPostsViewModel
@@ -72,7 +72,7 @@
                          CommentsCount = p.Comments.Count(),
                      })
                      .ToList(),
-                   PostsCount = this.PostRepository.All().Where(p => p.CategoryId == x.Id).Count(),
+                   PostsCount = this.postRepository.All().Where(p => p.CategoryId == x.Id).Count(),
                })
                .FirstOrDefault();
 

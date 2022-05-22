@@ -4,6 +4,7 @@
 
     using System.Linq;
     using System.Threading.Tasks;
+
     using TheAncientMerch.Data.Common.Repositories;
 
     using TheAncientMerch.Data.Models;
@@ -12,17 +13,17 @@
 
     public class SculptureMaterialService : ISculptureMaterialService
     {
+        private readonly IRepository<SculptureMaterial> sculptureMaterialRepository;
+
         public SculptureMaterialService(
             IRepository<SculptureMaterial> sculptureMaterialRepository)
         {
-            this.SculptureMaterialRepository = sculptureMaterialRepository;
+            this.sculptureMaterialRepository = sculptureMaterialRepository;
         }
-
-        public IRepository<SculptureMaterial> SculptureMaterialRepository { get; }
 
         public IEnumerable<SculptureMaterialViewModel> GetAllMaterials()
         {
-            var material = this.SculptureMaterialRepository.All()
+            var material = this.sculptureMaterialRepository.All()
                 .Select(x => new SculptureMaterialViewModel
                 {
                     Name = x.Name,

@@ -1,12 +1,11 @@
 ﻿namespace TheAncientMerch.Services.Data.Sculpture
 {
-    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using TheAncientMerch.Data.Common.Repositories;
-
     using TheAncientMerch.Data.Models;
     using TheAncientMerch.Services.Data.SculptureMaterial;
     using TheAncientMerch.Web.ViewModels.GreekDeitys;
@@ -14,18 +13,18 @@
 
     public class SculptureService : ISculptureService
     {
-        private readonly IDeletableEntityRepository<Sculpture> SculptureRepository;
-        private readonly ISculptureMaterialService MaterialService;
-        private readonly IDeletableEntityRepository<Payment> PaymentRepository;
+        private readonly IDeletableEntityRepository<Sculpture> sculptureRepository;
+        private readonly ISculptureMaterialService materialService;
+        private readonly IDeletableEntityRepository<Payment> paymentRepository;
 
         public SculptureService(
             IDeletableEntityRepository<Sculpture> sculptureRepository,
             ISculptureMaterialService materialService,
             IDeletableEntityRepository<Payment> paymentRepository)
         {
-            this.SculptureRepository = sculptureRepository;
-            this.MaterialService = materialService;
-            PaymentRepository = paymentRepository;
+            this.sculptureRepository = sculptureRepository;
+            this.materialService = materialService;
+            this.paymentRepository = paymentRepository;
         }
 
         public async Task Create(CreateSculptureInputModel createSculptureInputModel, string userId)
@@ -46,8 +45,8 @@
                 AddedByUserId = userId,
             };
 
-            await this.SculptureRepository.AddAsync(sculpture);
-            await this.SculptureRepository.SaveChangesAsync();
+            await this.sculptureRepository.AddAsync(sculpture);
+            await this.sculptureRepository.SaveChangesAsync();
         }
 
         public void DeleteSculpture(string userId,int sculptureId)
@@ -57,7 +56,7 @@
 
         public async Task EditSculptureAsync(EditSculptureViewModel model, int sculptureId)
         {
-            var sculpture = this.SculptureRepository
+            var sculpture = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == sculptureId)
                 .FirstOrDefault();
@@ -73,13 +72,13 @@
             sculpture.Price = model.Price;
             sculpture.MaterialId = model.MaterialId;
 
-            this.SculptureRepository.Update(sculpture);
-            await this.SculptureRepository.SaveChangesAsync();
+            this.sculptureRepository.Update(sculpture);
+            await this.sculptureRepository.SaveChangesAsync();
         }
 
         public async Task<SculpturesQueryViewModel> GetAllSculptures(int currentPage, int itemsPerPage, string material, int? sculptureType, int? color)
         {
-            var sculpturesQuery = this.SculptureRepository
+            var sculpturesQuery = this.sculptureRepository
                 .All()
                 .Where(x => x.IsDeleted == false && x.IsSold == false)
                 .AsQueryable();
@@ -123,7 +122,7 @@
                 .ToListAsync();
 
             List<string> scupltureMaterials = new List<string>();
-            foreach (var sMaterial in this.MaterialService.GetAllMaterials())
+            foreach (var sMaterial in this.materialService.GetAllMaterials())
             {
                 scupltureMaterials.Add(sMaterial.Name);
             }
@@ -143,7 +142,7 @@
 
         public IEnumerable<SculptureViewModel> GetAllUserSculptures(string userId)
         {
-            var sculptures = this.SculptureRepository
+            var sculptures = this.sculptureRepository
                 .All()
                 .Where(x => x.AddedByUserId == userId)
                 .Select(x => new SculptureViewModel()
@@ -169,13 +168,13 @@
 
         public int GetCount()
         {
-            var count = this.SculptureRepository.All().Count();
+            var count = this.sculptureRepository.All().Count();
             return count;
         }
 
         public SculptureViewModel GetSculptureById(int id)
         {
-            var sculpture = this.SculptureRepository
+            var sculpture = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == id)
                 .Select(x => new SculptureViewModel()
@@ -201,18 +200,18 @@
 
         public async Task DeleteSculptureAsync(int id)
         {
-            var sculpture = this.SculptureRepository
+            var sculpture = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
 
-            this.SculptureRepository.Delete(sculpture);
-            await this.SculptureRepository.SaveChangesAsync();
+            this.sculptureRepository.Delete(sculpture);
+            await this.sculptureRepository.SaveChangesAsync();
         }
 
         public async Task BuySculpture(BuySculptureFormModel model, string userId)
         {
-            var sculpture = this.SculptureRepository
+            var sculpture = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == model.SculptureId)
                 .FirstOrDefault();
@@ -232,18 +231,18 @@
                 Expiration = model.Expiration,
             };
 
-            await this.PaymentRepository.AddAsync(payment);
-            await this.PaymentRepository.SaveChangesAsync();
+            await this.paymentRepository.AddAsync(payment);
+            await this.paymentRepository.SaveChangesAsync();
 
             sculpture.PaymentId = payment.Id;
 
-            this.SculptureRepository.Update(sculpture);
-            await this.SculptureRepository.SaveChangesAsync();
+            this.sculptureRepository.Update(sculpture);
+            await this.sculptureRepository.SaveChangesAsync();
         }
 
         public BuySculptureViewModel GetSculptureForBuyViewModel(int id)
         {
-            var sculptureView = this.SculptureRepository
+            var sculptureView = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == id)
                 .Select(x => new BuySculptureViewModel
@@ -260,7 +259,7 @@
 
         public bool ChekIfSculptureIdIsValid(int id)
         {
-            var sculpture = this.SculptureRepository
+            var sculpture = this.sculptureRepository
                 .All()
                 .Where(x => x.Id == id && x.IsDeleted == false && x.IsSold == false)
                 .FirstOrDefault();

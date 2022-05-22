@@ -13,21 +13,24 @@
 
     public class ArticleService : IArticleService
     {
+
+        private readonly IDeletableEntityRepository<ArticleCategory> articleCategoryRepository;
+
+        private readonly IDeletableEntityRepository<Article> articleRepository;
+
         public ArticleService(
             IDeletableEntityRepository<ArticleCategory> articleCategoryRepository,
             IDeletableEntityRepository<Article> articleRepository)
         {
-            this.ArticleCategoryRepository = articleCategoryRepository;
-            this.ArticleRepository = articleRepository;
+            this.articleCategoryRepository = articleCategoryRepository;
+            this.articleRepository = articleRepository;
         }
 
-        public IDeletableEntityRepository<ArticleCategory> ArticleCategoryRepository { get; }
-
-        public IDeletableEntityRepository<Article> ArticleRepository { get; }
+       
 
         public IEnumerable<ArticleViewModel> GetAllArticles(int pageNumber, int itemsPerPage)
         {
-            var viewModel = this.ArticleRepository
+            var viewModel = this.articleRepository
                 .All()
                 .OrderByDescending(x => x.Id)
                 .Skip((pageNumber - 1) * itemsPerPage)
@@ -51,7 +54,7 @@
 
         public IEnumerable<ArticleCategoryViewModel> GetAllCategories()
         {
-            var categories = this.ArticleCategoryRepository
+            var categories = this.articleCategoryRepository
                 .All()
                 .Select(x => new ArticleCategoryViewModel
                 {
@@ -65,7 +68,7 @@
 
         public int ArticlesCount()
         {
-            var articlesCount = this.ArticleRepository
+            var articlesCount = this.articleRepository
                 .All()
                 .Count();
 
@@ -83,13 +86,13 @@
                 AddedByUserId = userId,
             };
 
-            await this.ArticleRepository.AddAsync(article);
-            await this.ArticleRepository.SaveChangesAsync();
+            await this.articleRepository.AddAsync(article);
+            await this.articleRepository.SaveChangesAsync();
         }
 
         public IEnumerable<ArticleViewModel> GetArticlesByCategoryId(int Id)
         {
-            var articlesByCategory = this.ArticleRepository
+            var articlesByCategory = this.articleRepository
                 .All()
                 .Where(x => x.CategoryId == Id)
                 .Select(x => new ArticleViewModel
@@ -111,18 +114,18 @@
 
         public async Task DeleteArticleAsync(int id)
         {
-            var article = this.ArticleRepository
+            var article = this.articleRepository
                 .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
 
-            this.ArticleRepository.Delete(article);
-            await this.ArticleRepository.SaveChangesAsync();
+            this.articleRepository.Delete(article);
+            await this.articleRepository.SaveChangesAsync();
         }
 
         public ArticleViewModel GetArticleById(int Id)
         {
-            var article = this.ArticleRepository
+            var article = this.articleRepository
                 .All()
                 .Where(x => x.Id == Id)
                 .Select(x => new ArticleViewModel
@@ -143,7 +146,7 @@
 
         public async Task EditArticleAsync(EditArticleInputModel model, int articleId, string userId)
         {
-            var article = this.ArticleRepository
+            var article = this.articleRepository
                 .All()
                 .Where(x => x.Id == articleId)
                 .FirstOrDefault();
@@ -153,8 +156,8 @@
             article.CategoryId = model.CategoryId;
             article.ImageUrl = model.ImageUrl;
 
-            this.ArticleRepository.Update(article);
-            await this.ArticleRepository.SaveChangesAsync();
+            this.articleRepository.Update(article);
+            await this.articleRepository.SaveChangesAsync();
         }
     }
 }

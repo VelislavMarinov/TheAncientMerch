@@ -1,10 +1,11 @@
 ﻿namespace TheAncientMerch.Services.Data.Comment
 {
-    using System.Threading.Tasks;
-    using TheAncientMerch.Data.Common.Repositories;
-    using TheAncientMerch.Web.ViewModels.Comments;
-    using TheAncientMerch.Data.Models;
     using System.Linq;
+    using System.Threading.Tasks;
+
+    using TheAncientMerch.Data.Common.Repositories;
+    using TheAncientMerch.Data.Models;
+    using TheAncientMerch.Web.ViewModels.Comments;
 
     public class CommentService : ICommentService
     {

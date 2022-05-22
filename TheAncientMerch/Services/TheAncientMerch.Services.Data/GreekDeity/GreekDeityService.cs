@@ -16,14 +16,14 @@
     {
         public GreekDeityService(IRepository<GreekDeity> greekDeityRepository)
         {
-            this.GreekDeityRepository = greekDeityRepository;
+            this.greekDeityRepository = greekDeityRepository;
         }
 
-        public IRepository<GreekDeity> GreekDeityRepository { get; }
+        private readonly IRepository<GreekDeity> greekDeityRepository;
 
         public IEnumerable<DeityViewModel> GetAllGods()
         {
-            var gods = this.GreekDeityRepository
+            var gods = this.greekDeityRepository
                 .All()
                 .Where(x => x.Type == DeityType.God)
                 .Select(x => new DeityViewModel
@@ -40,7 +40,7 @@
 
         public IEnumerable<DeityViewModel> GetAllTitans()
         {
-            var titans = this.GreekDeityRepository
+            var titans = this.greekDeityRepository
                 .All()
                 .Where(x => x.Type == DeityType.Titan)
                .Select(x => new DeityViewModel
@@ -57,7 +57,7 @@
 
         public DeityViewModel GetDeity(int id)
         {
-            var deity = this.GreekDeityRepository
+            var deity = this.greekDeityRepository
                 .All()
                 .Where(x => x.Id == id)
                 .Select(x => new DeityViewModel
