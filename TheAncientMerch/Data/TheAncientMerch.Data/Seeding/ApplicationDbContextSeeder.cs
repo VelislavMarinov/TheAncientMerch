@@ -30,8 +30,10 @@
                               new SettingsSeeder(),
                               new GreekDeitySeeder(),
                               new SculptureMaterialSeeder(),
+                              new SculptureSeeder(),
                               new ArticleCategoriesSeeder(),
                               new ForumCategoriesSeeder(),
+                              new ArticleSeeder(),
                           };
 
             foreach (var seeder in seeders)

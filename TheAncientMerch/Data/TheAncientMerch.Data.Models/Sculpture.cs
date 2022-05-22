@@ -43,6 +43,7 @@
         [Required]
         public SculptureType SculptureType { get; set; }
 
+        [Required]
         public string AddedByUserId { get; set; }
 
         public virtual ApplicationUser AddedByUser { get; set; }

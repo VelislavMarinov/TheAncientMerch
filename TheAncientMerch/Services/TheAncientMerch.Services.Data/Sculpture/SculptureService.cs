@@ -121,12 +121,8 @@
                 })
                 .ToListAsync();
 
-            List<string> scupltureMaterials = new List<string>();
-            foreach (var sMaterial in this.materialService.GetAllMaterials())
-            {
-                scupltureMaterials.Add(sMaterial.Name);
-            }
-
+            List<string> scupltureMaterials = (from sculptureMaterial in this.materialService.GetAllMaterials()
+                                               select sculptureMaterial.Name).ToList();
             return new SculpturesQueryViewModel()
             {
                 Sculptures = sculptures,
