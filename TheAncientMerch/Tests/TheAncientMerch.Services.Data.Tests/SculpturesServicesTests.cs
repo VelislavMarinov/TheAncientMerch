@@ -24,6 +24,7 @@
         {
             this.paymentRepository = new Mock<IDeletableEntityRepository<Payment>>();
             this.sculptureRepository = new Mock<IDeletableEntityRepository<Sculpture>>();
+            this.materialService = new Mock<ISculptureMaterialService>();
         }
 
 
