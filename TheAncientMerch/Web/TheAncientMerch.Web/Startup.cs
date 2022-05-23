@@ -72,7 +72,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IGreekDeityService, GreekDeityService>();
             services.AddTransient<ISculptureMaterialService, SculptureMaterialService>();
             services.AddTransient<ISculptureService, SculptureService>();

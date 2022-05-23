@@ -27,7 +27,6 @@
                           {
                               new RolesSeeder(),
                               new UsersSeeder(),
-                              new SettingsSeeder(),
                               new GreekDeitySeeder(),
                               new SculptureMaterialSeeder(),
                               new SculptureSeeder(),

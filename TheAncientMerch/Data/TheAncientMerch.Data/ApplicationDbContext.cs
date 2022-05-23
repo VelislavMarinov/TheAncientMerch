@@ -26,7 +26,6 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
 
         public DbSet<GreekDeity> GreekDeities { get; set; }
 
