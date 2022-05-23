@@ -49,11 +49,6 @@
             await this.sculptureRepository.SaveChangesAsync();
         }
 
-        public void DeleteSculpture(string userId,int sculptureId)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public async Task EditSculptureAsync(EditSculptureViewModel model, int sculptureId)
         {
             var sculpture = this.sculptureRepository

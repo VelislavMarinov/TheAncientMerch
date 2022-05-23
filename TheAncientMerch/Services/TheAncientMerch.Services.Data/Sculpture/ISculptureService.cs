@@ -24,8 +24,6 @@
 
         int GetCount();
 
-        void DeleteSculpture(string userId, int sculptureId);
-
         SculptureViewModel GetSculptureById(int id);
 
         Task EditSculptureAsync(EditSculptureViewModel model, int sculptureId);
