@@ -89,7 +89,10 @@
                 })
                 .ToList();
 
-            post.Comments = comments;
+            if (post != null)
+            {
+                post.Comments = comments;
+            }
 
             return post;
         }
