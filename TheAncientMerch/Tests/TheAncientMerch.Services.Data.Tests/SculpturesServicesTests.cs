@@ -27,7 +27,6 @@
             this.materialService = new Mock<ISculptureMaterialService>();
         }
 
-
         [Fact]
         public async Task GetAllSculpturesShouldWorkCorrectly()
         {

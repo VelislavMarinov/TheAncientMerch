@@ -1,15 +1,13 @@
 ﻿namespace TheAncientMerch.Services.Data.Tests
 {
     using System.Linq;
-    using System.Threading.Tasks;
+
     using Moq;
     using TheAncientMerch.Data;
     using TheAncientMerch.Data.Common.Repositories;
     using TheAncientMerch.Data.Models;
     using TheAncientMerch.Data.Repositories;
     using TheAncientMerch.Services.Data.Forum;
-    using TheAncientMerch.Services.Mapping;
-    using TheAncientMerch.Web.ViewModels.Articles;
     using TheAncientMerch.Web.ViewModels.Forum;
     using Xunit;
 

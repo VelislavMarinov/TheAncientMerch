@@ -8,9 +8,7 @@
     using TheAncientMerch.Data.Common.Repositories;
     using TheAncientMerch.Data.Models;
     using TheAncientMerch.Data.Repositories;
-    using TheAncientMerch.Services.Data.Comment;
     using TheAncientMerch.Services.Data.Post;
-    using TheAncientMerch.Services.Mapping;
     using TheAncientMerch.Web.ViewModels.Posts;
     using Xunit;
 
