@@ -231,11 +231,11 @@
             await this.sculptureRepository.SaveChangesAsync();
         }
 
-        public BuySculptureViewModel GetSculptureForBuyViewModel(int id)
+        public BuySculptureViewModel GetSculptureForBuyViewModel(int id, string userId)
         {
             var sculptureView = this.sculptureRepository
                 .All()
-                .Where(x => x.Id == id)
+                .Where(x => x.Id == id && x.AddedByUserId != userId)
                 .Select(x => new BuySculptureViewModel
                 {
                     Id = x.Id,

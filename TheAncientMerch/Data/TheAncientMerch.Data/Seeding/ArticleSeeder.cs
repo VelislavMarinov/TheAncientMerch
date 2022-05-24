@@ -10,6 +10,10 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
+            if (dbContext.Articles.Any())
+            {
+                return;
+            }
 
             var articles = new List<Article>
             {

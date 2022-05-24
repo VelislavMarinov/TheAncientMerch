@@ -136,23 +136,32 @@
                 return this.BadRequest();
             }
 
+            var userId = this.User.GetId();
+
             var viewModel = new BuySculptureFormModel
             {
-                SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(id),
+                SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(id, userId),
             };
+
+            if (viewModel.SculptureModel == null)
+            {
+                this.TempData["Message"] = "Invalid sculpture.";
+                return this.Redirect("/Sculptures/All");
+            }
+
             return this.View(viewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Buy(BuySculptureFormModel model)
         {
+            var userId = this.User.GetId();
+
             if (!this.ModelState.IsValid)
             {
-                model.SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(model.SculptureId);
+                model.SculptureModel = this.sculptureService.GetSculptureForBuyViewModel(model.SculptureId, userId);
                 return this.View(model);
             }
-
-            var userId = this.User.GetId();
 
             await this.sculptureService.BuySculpture(model, userId);
 

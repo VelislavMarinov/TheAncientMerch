@@ -18,7 +18,7 @@
 
         bool ChekIfSculptureIdIsValid(int id);
 
-        BuySculptureViewModel GetSculptureForBuyViewModel(int id);
+        BuySculptureViewModel GetSculptureForBuyViewModel(int id, string userId);
 
         IEnumerable<SculptureViewModel> GetAllUserSculptures(string userId);
 
