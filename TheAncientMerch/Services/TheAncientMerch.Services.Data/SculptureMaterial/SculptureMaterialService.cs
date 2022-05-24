@@ -3,7 +3,6 @@
     using System.Collections.Generic;
 
     using System.Linq;
-    using System.Threading.Tasks;
 
     using TheAncientMerch.Data.Common.Repositories;
 
@@ -15,8 +14,7 @@
     {
         private readonly IRepository<SculptureMaterial> sculptureMaterialRepository;
 
-        public SculptureMaterialService(
-            IRepository<SculptureMaterial> sculptureMaterialRepository)
+        public SculptureMaterialService(IRepository<SculptureMaterial> sculptureMaterialRepository)
         {
             this.sculptureMaterialRepository = sculptureMaterialRepository;
         }

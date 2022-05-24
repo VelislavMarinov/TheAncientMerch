@@ -14,12 +14,12 @@
 
     public class GreekDeityService : IGreekDeityService
     {
+        private readonly IRepository<GreekDeity> greekDeityRepository;
+
         public GreekDeityService(IRepository<GreekDeity> greekDeityRepository)
         {
             this.greekDeityRepository = greekDeityRepository;
         }
-
-        private readonly IRepository<GreekDeity> greekDeityRepository;
 
         public IEnumerable<DeityViewModel> GetAllGods()
         {
