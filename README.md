@@ -35,3 +35,37 @@ The Ancient Merch is a ready-to-use **.NET 6.0 MVC** application.
 - xUnit
 - Moq
   <br/><br/>
+
+  ## Database Diagram
+
+  <kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/TheAncientMerchDiagram.png" /></kbd>
+  <br/><br/>
+
+## 📸 Application screenshots
+
+<kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/Screenshot%20(10).png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/Screenshot%20(11).png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/Screenshot%20(12).png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/Screenshot%20(13).png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/VelislavMarinov/TheAncientMerch/blob/main/TheAncientMerch/AppScreenShots/Screenshot%20(14).png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/06.All%20exercises%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/07.Exercise%20Diary%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/08.Food%20diary%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/09.Forum%20post-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/10.All%20articles%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/11.Article%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/12.Admin%20dashboard%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
+<kbd><img src="https://github.com/GeorgiGradev/MyFitnessApp/blob/main/MyFitnessApp/AppScreenshots/13.Admin%20area%20Users%20-%20MyFitnessApp.png" /></kbd>
+<br/><br/>
