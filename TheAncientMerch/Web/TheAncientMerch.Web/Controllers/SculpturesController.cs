@@ -99,8 +99,6 @@
             viewModel.Origin = model.Origin;
             viewModel.Price = model.Price;
             viewModel.UserId = model.UserId;
-
-
             return this.View(viewModel);
         }
 
