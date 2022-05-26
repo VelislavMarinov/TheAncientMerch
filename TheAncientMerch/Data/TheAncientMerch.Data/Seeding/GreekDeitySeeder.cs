@@ -25,7 +25,7 @@
                 new GreekDeity
                 {
                     Name = "Zeus",
-                    ImageUrl = "https://www.theoi.com/image/K1.1Zeus.jpg",
+                    ImageUrl = "https://www.giantbomb.com/a/uploads/scale_medium/1/17172/1443469-zeus_by_thegryph.jpg",
                     Description = @"ZEUS (Zeus), the greatest of the Olympian gods, and the father of gods and men, was a son of Cronos and Rhea, a brother of Poseidon, Hades (Pluto), Hestia, Demeter, Hera, and at the same time married to his sister Hera. When Zeus and his brothers distributed among themselves the government of the world by lot, Poseidon obtained the sea, Hades the lower world, and Zeus the heavens and the upper regions, but the earth became common to all (Hom. Il. xv. 187, &c., i. 528, ii. 111; Virg. Aen. iv. 372).
 Later mythologers enumerate three Zeus in their genealogies two Arcadian ones and one Cretan; and tne first is said to be a son of Aether, the second of Coelus, and the third of Saturnus (Cic. de Nat. Deor. iii. 21). This accounts for the fact that some writers use the name of the king of heaven who sends dew, rain, snow, thunder, and lightning for heaven itself in its physical sense. (Horat. Carm. i. 1. 25 ; Virg. Georg. ii. 419.)
 According to the Homeric account Zeus, like the other Olympian gods, dwelt on Mount Olympus in Thessaly, which was believed to penetrate with its lofty summit into heaven itself (Il. i. 221, &c., 354, 609, xxi. 438). He is called the father of gods and men (i. 514, v. 33; comp. Aeschyl. Sept. 512), the most high and powerful among the immortals, whom all others obey (Il. xix. 258, viii. 10, &c.). He is the highest ruler, who with his counsel manages every thing (i. 175, viii. 22), the founder of kingly power, of law and of order, whence Dice, Themis and Nemesis are his assistants (i. 238, ii. 205, ix. 99, xvi. 387; comp. Hes. Op. et D. 36 ; Callim. Hymn. in Jov. 79).
@@ -67,7 +67,7 @@ Athena became the patron goddess of the city of Athens after a competition with 
                 new GreekDeity
                 {
                     Name = "Hermes",
-                    ImageUrl = "https://www.theoi.com/image/K11.11Hermes.jpg",
+                    ImageUrl = "https://media.istockphoto.com/illustrations/hermes-greek-god-of-transitions-wood-engraving-published-1878-illustration-id507882363",
                     Description = @"Hermes (/ˈhɜːrmiːz/; Greek: Ἑρμῆς) is an Olympian deity in ancient Greek religion and mythology. Hermes is considered the herald of the gods. He is also considered the protector of human heralds, travellers, thieves, merchants, and orators. He is able to move quickly and freely between the worlds of the mortal and the divine, aided by his winged sandals. Hermes plays the role of the psychopomp or ""soul guide""—a conductor of souls into the afterlife.
 
 In myth, Hermes functioned as the emissary and messenger of the gods, and was often presented as the son of Zeus and Maia, the Pleiad. He is regarded as ""the divine trickster,"" about which the Homeric Hymn to Hermes offers the most well-known account.
@@ -81,7 +81,7 @@ In Roman mythology, Hermes was known as Mercury, a name derived from the Latin m
                 new GreekDeity
                 {
                     Name = "Hera",
-                    ImageUrl = "https://www.theoi.com/image/K4.7Hera.jpg",
+                    ImageUrl = "https://preview.redd.it/ax82mjvwptk71.jpg?width=640&crop=smart&auto=webp&s=610250153c9b742fef19049f7678c4aac1878b17",
                     Description = @"Hera (/ˈhɛrə, ˈhɪərə/; Greek: Ἥρα, translit. Hḗrā; Ἥρη, Hḗrē in Ionic and Homeric Greek) is the goddess of women, marriage, family and childbirth in ancient Greek religion and mythology, one of the twelve Olympians and the sister and wife of Zeus. She is the daughter of the Titans Cronus and Rhea. Hera rules over Mount Olympus as queen of the gods. A matronly figure, Hera served as both the patroness and protectress of married women, presiding over weddings and blessing marital unions. One of Hera's defining characteristics is her jealous and vengeful nature against Zeus' numerous lovers and illegitimate offspring, as well as the mortals who cross her.
 
 Hera on an antique fresco from Pompeii
@@ -94,7 +94,7 @@ Her Roman counterpart is Juno.",
                 new GreekDeity
                 {
                     Name = "Hephaestus",
-                    ImageUrl = "https://www.theoi.com/image/K7.1Hephaistos.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/be/db/e6/bedbe6bf1fd5f8fb9da2b86c59a9c330.jpg",
                     Description = @"Hephaestus (/hɪˈfiːstəs, hɪˈfɛstəs/; eight spellings; Greek: Ἥφαιστος, translit. Hḗphaistos) is the Greek god of blacksmiths, metalworking, carpenters, craftsmen, artisans, sculptors, metallurgy, fire (compare, however, with Hestia), and volcanoes. Hephaestus's Roman counterpart is Vulcan. In Greek mythology, Hephaestus was either the son of Zeus and Hera or he was Hera's parthenogenous child. He was cast off Mount Olympus by his mother Hera because of his lameness, the result of a congenital impairment; or in another account, by Zeus for protecting Hera from his advances (in which case his lameness would have been the result of his fall rather than the reason for it).
 
 As a smithing god, Hephaestus made all the weapons of the gods in Olympus. He served as the blacksmith of the gods, and was worshipped in the manufacturing and industrial centres of Greece, particularly Athens. The cult of Hephaestus was based in Lemnos. Hephaestus's symbols are a smith's hammer, anvil, and a pair of tongs.",
@@ -104,7 +104,7 @@ As a smithing god, Hephaestus made all the weapons of the gods in Olympus. He se
                 new GreekDeity
                 {
                     Name = "Dionysus",
-                    ImageUrl = "https://www.theoi.com/image/Z12.1Dionysos.jpg",
+                    ImageUrl = "https://pbs.twimg.com/media/EqbNd_wUwAAHcFF.jpg:large",
                     Description = @"Dionysus (/daɪ.əˈnaɪsəs/; Greek: Διόνυσος Dionysos) is the god of the grape-harvest, winemaking, orchards and fruit, vegetation, fertility, insanity, ritual madness, religious ecstasy, festivity and theatre in ancient Greek religion and myth. He is also known as Bacchus (/ˈbækəs/ or /ˈbɑːkəs/; Greek: Βάκχος Bacchos), the name adopted by the Romans; the frenzy that he induces is bakkheia. As Eleutherios (""the liberator""), his wine, music and ecstatic dance free his followers from self-conscious fear and care, and subvert the oppressive restraints of the powerful. His thyrsus, a fennel-stem sceptre, sometimes wound with ivy and dripping with honey, is both a beneficent wand and a weapon used to destroy those who oppose his cult and the freedoms he represents. Those who partake of his mysteries are believed to become possessed and empowered by the god himself.
 
 His origins are uncertain, and his cults took many forms; some are described by ancient sources as Thracian, others as Greek. In Orphic religion, he was variously a son of Zeus and Persephone; a chthonic or underworld aspect of Zeus; or the twice-born son of Zeus and the mortal Semele. The Eleusinian Mysteries identify him with Iacchus, the son or husband of Demeter. Most accounts say he was born in Thrace, traveled abroad, and arrived in Greece as a foreigner. His attribute of ""foreignness"" as an arriving outsider-god may be inherent and essential to his cults, as he is a god of epiphany, sometimes called ""the god that comes"".
@@ -118,7 +118,7 @@ Romans identified Bacchus with their own Liber Pater, the ""Free Father"" of the
                 new GreekDeity
                 {
                     Name = "Demeter",
-                    ImageUrl = "https://www.theoi.com/image/K26.1Ploutos.jpg",
+                    ImageUrl = "https://i.pinimg.com/564x/12/09/f5/1209f589bc7ff3ddc9c208b6f827c0f5.jpg",
                     Description = @"In ancient Greek religion and mythology, Demeter (/dɛˈmiːtər/; Attic: Δημήτηρ Dēmḗtēr [dɛːmɛ́ːtɛːr]; Doric: Δαμάτηρ Dāmā́tēr) is the Olympian goddess of the harvest and agriculture, presiding over grains and the fertility of the earth. She is also called Deo (Δηώ).
 
 Her cult titles include Sito (Σιτώ), ""she of the Grain"", as the giver of food or grain, and Thesmophoros (θεσμός, thesmos: divine order, unwritten law; φόρος, phoros: bringer, bearer), ""giver of customs"" or ""legislator"", in association with the secret female-only festival called the Thesmophoria.
@@ -132,7 +132,7 @@ Demeter was often considered to be the same figure as the Anatolian goddess Cybe
                 new GreekDeity
                 {
                     Name = "Athena",
-                    ImageUrl = "https://www.theoi.com/image/K8.3Athena.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/95/92/dc/9592dc8ae1f54d3390a9b80818fd645a.jpg",
                     Description = @"Athena or Athene, often given the epithet Pallas, is an ancient Greek goddess associated with wisdom, handicraft, and warfare who was later syncretized with the Roman goddess Minerva. Athena was regarded as the patron and protectress of various cities across Greece, particularly the city of Athens, from which she most likely received her name. The Parthenon on the Acropolis of Athens is dedicated to her. Her major symbols include owls, olive trees, snakes, and the Gorgoneion. In art, she is generally depicted wearing a helmet and holding a spear.
 
 From her origin as an Aegean palace goddess, Athena was closely associated with the city. She was known as Polias and Poliouchos (both derived from polis, meaning ""city-state""), and her temples were usually located atop the fortified acropolis in the central part of the city. The Parthenon on the Athenian Acropolis is dedicated to her, along with numerous other temples and monuments. As the patron of craft and weaving, Athena was known as Ergane. She was also a warrior goddess, and was believed to lead soldiers into battle as Athena Promachos. Her main festival in Athens was the Panathenaia, which was celebrated during the month of Hekatombaion in midsummer and was the most important festival on the Athenian calendar.
@@ -146,7 +146,7 @@ She plays an active role in the Iliad, in which she assists the Achaeans and, in
                 new GreekDeity
                 {
                     Name = "Artemis",
-                    ImageUrl = "https://www.theoi.com/image/K6.1Artemis.jpg",
+                    ImageUrl = "https://www.worldhistory.org/img/r/p/500x600/10157.jpg?v=1642922104",
                     Description = @"In Greek mythology and religion, Artemis (/ˈɑːrtɛmɪs/; Greek: Ἄρτεμις) is the goddess of the hunt, the wilderness, wild animals, nature, vegetation, childbirth, the Moon, and chastity. She would often roam the forests of Greece, attended by her large entourage, mostly made up by nymphs, some mortals and hunters. The countryside goddess Diana is her Roman equivalent.
 
 In Greek tradition, Artemis is the daughter of the sky god and king of gods Zeus and Leto, and the twin sister of Apollo. In most accounts, the twins are the products of an extramarital liaison. For this, Zeus' wife Hera forbade Leto from giving birth anywhere on land. Only the island of Delos gave refuge to Leto, allowing her to give birth to her children. Usually, Artemis is the twin to be born first, who then procceeded to assist Leto in the birth of the second child, Apollo. Like her brother, she was a kourotrophic deity, that is the patron and protector of young children, especially girls, and women, and was believed to both bring disease upon women and children and relieve them of it. Artemis was worshipped as one of the primary goddesses of childbirth and midwifery along with Eileithyia and Hera. Much like Athena and Hestia, Artemis preferred to remain a maiden goddess and was sworn never to marry, and was thus one of the three Greek virgin goddesses, over whom the goddess of love and lust, Aphrodite, had no power whatsoever.
@@ -162,7 +162,7 @@ Artemis was one of the most widely venerated of the Ancient Greek deities, her w
                 new GreekDeity
                 {
                     Name = "Ares",
-                    ImageUrl = "https://www.theoi.com/image/K9.6Ares.jpg",
+                    ImageUrl = "https://miro.medium.com/max/1148/1*X7A5TwL_tefHUyZbQM7YHA.jpeg",
                     Description = @"Ares (/ˈɛəriːz/; Ancient Greek: Ἄρης, Árēs [árɛːs]) is the Greek god of courage and war. He is one of the Twelve Olympians, and the son of Zeus and Hera. The Greeks were ambivalent toward him. He embodies the physical valor necessary for success in war but can also personify sheer brutality and bloodlust, in contrast to his sister, the armored Athena, whose martial functions include military strategy and generalship. An association with Ares endows places, objects, and other deities with a savage, dangerous, or militarized quality.
 
 Although Ares' name shows his origins as Mycenaean, his reputation for savagery was thought by some to reflect his likely origins as a Thracian deity. Some cities in Greece and several in Asia Minor held annual festivals to bind and detain him as their protector. In parts of Asia Minor, he was an oracular deity. Still further away from Greece, the Scythians were said to ritually kill one in a hundred prisoners of war as an offering to their equivalent of Ares. The later belief that ancient Spartans had offered human sacrifice to Ares may owe more to mythical prehistory, misunderstandings, and reputation than to reality.
@@ -176,7 +176,7 @@ Ares' nearest counterpart in Roman religion is Mars, who was given a more import
                 new GreekDeity
                 {
                     Name = "Apollo",
-                    ImageUrl = "https://www.theoi.com/image/K5.16Apollon.jpg",
+                    ImageUrl = "https://cdna.artstation.com/p/assets/images/images/012/036/496/large/guangjian-huang-632bafadgy1ftohrhmt8yj217b1xg4qr.jpg?1532685000",
                     Description = @"Apollo is one of the Olympian deities in classical Greek and Roman religion and Greek and Roman mythology. The national divinity of the Greeks, Apollo has been recognized as a god of archery, music and dance, truth and prophecy, healing and diseases, the Sun and light, poetry, and more. One of the most important and complex of the Greek gods, he is the son of Zeus and Leto, and the twin brother of Artemis, goddess of the hunt. Seen as the most beautiful god and the ideal of the kouros (ephebe, or a beardless, athletic youth), Apollo is considered to be the most Greek of all the gods.[citation needed] Apollo is known in Greek-influenced Etruscan mythology as Apulu.
 
 As the patron deity of Delphi (Apollo Pythios), Apollo is an oracular god—the prophetic deity of the Delphic Oracle. Apollo is the god who affords help and wards off evil; various epithets call him the ""averter of evil"". Delphic Apollo is the patron of seafarers, foreigners and the protector of fugitives and refugees.
@@ -192,7 +192,7 @@ As the god of mousike, Apollo presides over all music, songs, dance and poetry. 
                 new GreekDeity
                 {
                     Name = "Aphrodite",
-                    ImageUrl = "https://www.theoi.com/image/K10.3BAphrodite.jpg",
+                    ImageUrl = "https://pbs.twimg.com/media/DWFO0PbV4AAB9Si.jpg",
                     Description = @"Aphrodite (/ˌæfrəˈdaɪtiː/ (listen) AF-rə-DY-tee; Ancient Greek: Ἀφροδίτη, romanized: Aphrodítē; Attic Greek pronunciation: [a.pʰro.dǐː.tɛː], Koine Greek: [a.ɸroˈdi.te̝], Modern Greek: [a.froˈði.ti]) is an ancient Greek goddess associated with love, lust, beauty, pleasure, passion and procreation. She was syncretized with the Roman goddess Venus. Aphrodite's major symbols include myrtles, roses, doves, sparrows, and swans. The cult of Aphrodite was largely derived from that of the Phoenician goddess Astarte, a cognate of the East Semitic goddess Ishtar, whose cult was based on the Sumerian cult of Inanna. Aphrodite's main cult centers were Cythera, Cyprus, Corinth, and Athens. Her main festival was the Aphrodisia, which was celebrated annually in midsummer. In Laconia, Aphrodite was worshipped as a warrior goddess. She was also the patron goddess of prostitutes, an association which led early scholars to propose the concept of ""sacred prostitution"" in Greco-Roman culture, an idea which is now generally seen as erroneous.
 
 In Hesiod's Theogony, Aphrodite is born off the coast of Cythera from the foam (ἀφρός, aphrós) produced by Uranus's genitals, which his son Cronus had severed and thrown into the sea. In Homer's Iliad, however, she is the daughter of Zeus and Dione. Plato, in his Symposium 180e, asserts that these two origins actually belong to separate entities: Aphrodite Ourania (a transcendent, ""Heavenly"" Aphrodite) and Aphrodite Pandemos (Aphrodite common to ""all the people""). Aphrodite had many other epithets, each emphasizing a different aspect of the same goddess, or used by a different local cult. Thus she was also known as Cytherea (Lady of Cythera) and Cypris (Lady of Cyprus), because both locations claimed to be the place of her birth.
@@ -204,7 +204,7 @@ In Greek mythology, Aphrodite was married to Hephaestus, the god of fire, blacks
                 new GreekDeity
                 {
                     Name = "Atlas",
-                    ImageUrl = "https://www.theoi.com/image/T20.1Atlas.jpg",
+                    ImageUrl = "https://wallpaperaccess.com/full/6875296.jpg",
                     Description = @"In Greek mythology, Atlas (/ˈætləs/; Greek: Ἄτλας, Átlas) is a Titan condemned to hold up the heavens or sky for eternity after the Titanomachy. Atlas also plays a role in the myths of two of the greatest Greek heroes: Heracles (Hercules in Roman mythology) and Perseus. According to the ancient Greek poet Hesiod, Atlas stood at the ends of the earth in extreme west. Later, he became commonly identified with the Atlas Mountains in northwest Africa and was said to be the first King of Mauretania. Atlas was said to have been skilled in philosophy, mathematics, and astronomy. In antiquity, he was credited with inventing the first celestial sphere. In some texts, he is even credited with the invention of astronomy itself.
 
 Atlas was the son of the Titan Iapetus and the Oceanid Asia or Clymene. He was a brother of Epimetheus and Prometheus. He had many children, mostly daughters, the Hesperides, the Hyades, the Pleiades, and the nymph Calypso who lived on the island Ogygia.
@@ -212,13 +212,13 @@ Atlas was the son of the Titan Iapetus and the Oceanid Asia or Clymene. He was a
 The term Atlas has been used to describe a collection of maps since the 16th century when Flemish geographer Gerardus Mercator published his work in honour of the mythological Titan.
 
 The ""Atlantic Ocean"" is derived from ""Sea of Atlas"". The name of Atlantis mentioned in Plato's Timaeus' dialogue derives from ""Atlantis nesos"" (Ancient Greek: Ἀτλαντὶς νῆσος), literally meaning ""Atlas's Island.""",
-                    VideoUrl = "https://www.youtube.com/watch?v=aLOFvUf9VCc",
+                    VideoUrl = "https://www.youtube.com/embed/K5hkCvsm4lA",
                     Type = Enum.Parse<DeityType>("Titan"),
                 },
                 new GreekDeity
                 {
                     Name = "Cronus",
-                    ImageUrl = "https://www.theoi.com/image/T6.1BKronos.jpg",
+                    ImageUrl = "https://www.greeklegendsandmyths.com/uploads/5/3/1/3/53133595/published/6854049.jpg?1522508861",
                     Description = @"In Greek mythology, Cronus, Cronos, or Kronos (/ˈkroʊnəs/ or /ˈkroʊnɒs/, from Greek: Κρόνος, Krónos) was the leader and youngest of the first generation of Titans, the divine descendants of the primordial Gaia (Mother Earth) and Uranus (Father Sky). He overthrew his father and ruled during the mythological Golden Age, until he was overthrown by his own son Zeus and imprisoned in Tartarus. According to Plato, however, the deities Phorcys, Cronus, and Rhea were the eldest children of Oceanus and Tethys.
 
 Cronus was usually depicted with a harpe, scythe or a sickle, which was the instrument he used to castrate and depose Uranus, his father. In Athens, on the twelfth day of the Attic month of Hekatombaion, a festival called Kronia was held in honour of Cronus to celebrate the harvest, suggesting that, as a result of his association with the virtuous Golden Age, Cronus continued to preside as a patron of the harvest. Cronus was also identified in classical antiquity with the Roman deity Saturn.",
@@ -228,7 +228,7 @@ Cronus was usually depicted with a harpe, scythe or a sickle, which was the inst
                 new GreekDeity
                 {
                     Name = "Mnemosyne",
-                    ImageUrl = "https://www.theoi.com/image/img_mnemosyne.jpg",
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Mnemosyne_%28color%29_Rossetti.jpg/170px-Mnemosyne_%28color%29_Rossetti.jpg",
                     Description = @"Mnemosyne, in Greek mythology, the goddess of memory. A Titaness, she was the daughter of Uranus (Heaven) and Gaea (Earth), and, according to Hesiod, the mother (by Zeus) of the nine Muses. She gave birth to the Muses after Zeus went to Pieria and stayed with her nine consecutive nights.",
                     VideoUrl = "https://www.youtube.com/watch?v=xliDJCBxHAo",
                     Type = Enum.Parse<DeityType>("Titan"),
@@ -236,7 +236,7 @@ Cronus was usually depicted with a harpe, scythe or a sickle, which was the inst
                 new GreekDeity
                 {
                     Name = "Oceanus",
-                    ImageUrl = "https://www.theoi.com/image/Z35.1Okeanos.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/9e/fe/67/9efe67676f3dc7c0a8a79c40840c4335.jpg",
                     Description = @"Oceanus, in Greek mythology, the river that flowed around the Earth (conceived as flat), for example, in the shield of Achilles described in Homer’s Iliad, Book XVIII. Beyond it, to the west, were the sunless land of the Cimmerii, the country of dreams, and the entrance to the underworld. In Hesiod’s Theogony, Oceanus was the oldest Titan, the son of Uranus (Heaven) and Gaea (Earth), the husband of the Titan Tethys, and father of 3,000 stream spirits and 3,000 ocean nymphs. In the Iliad, Book XIV, Oceanus is identified once as the begetter of the gods and once as the begetter of all things; although the comments were isolated, they were influential in later thinking. Oceanus also appears in Aeschylus’s Prometheus Bound.",
                     VideoUrl = "https://www.youtube.com/watch?v=EAyFZ3E30dA",
                     Type = Enum.Parse<DeityType>("Titan"),
@@ -244,7 +244,7 @@ Cronus was usually depicted with a harpe, scythe or a sickle, which was the inst
                 new GreekDeity
                 {
                     Name = "Prometheus",
-                    ImageUrl = "https://www.theoi.com/image/T20.1Prometheus.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/20/09/42/20094275a910f3212d095f553dcc4e49.jpg",
                     Description = @"In Greek mythology, Prometheus (/prəˈmiːθiəs/; Ancient Greek: Προμηθεύς, [promɛːtʰéu̯s], possibly meaning ""forethought"") is a Titan god of fire. Prometheus is best known for defying the gods by stealing fire from them and giving it to humanity in the form of technology, knowledge, and more generally, civilization. In some versions of the myth he is also credited with the creation of humanity from clay. Prometheus is known for his intelligence and for being a champion of humankind, and is also generally seen as the author of the human arts and sciences. He is sometimes presented as the father of Deucalion, the hero of the flood story.
 
 The punishment of Prometheus as a consequence of the theft of fire and giving it to humans is a popular subject of both ancient and modern culture. Zeus, king of the Olympian gods, sentenced Prometheus to eternal torment for his transgression. Prometheus was bound to a rock, and an eagle—the emblem of Zeus—was sent to eat his liver (in ancient Greece, the liver was thought to be the seat of human emotions). His liver would then grow back overnight, only to be eaten again the next day in an ongoing cycle. According to several major versions of the myth, most notably that of Hesiod, Prometheus was eventually freed by the hero Heracles. In yet more symbolism, the struggle of Prometheus is located by some at Mount Elbrus or at Mount Kazbek, two volcanic promontories in the Caucasus Mountains beyond which for the ancient Greeks lay the realm of the barbarii.
@@ -258,7 +258,7 @@ In the Western classical tradition, Prometheus became a figure who represented h
                 new GreekDeity
                 {
                     Name = "Rhea",
-                    ImageUrl = "https://www.theoi.com/image/T6.1CRhea.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/28/6f/0a/286f0a27af20e1b440527c469c74ad45.jpg",
                     Description = @"RHEIA (Rhea) was the Titanis (Titaness) mother of the gods, and goddess of female fertility, motherhood, and generation. Her name means ""flow"" and ""ease."" As the wife of Kronos (Cronus, Time), she represented the eternal flow of time and generations; as the great Mother (Meter Megale), the ""flow"" was menstrual blood, birth waters, and milk. She was also a goddess of comfort and ease, a blessing reflected in the common Homeric phrase ""the gods who live at their ease (rhea).""
 
 In myth, Rhea was the wife of the Titan Kronos (Cronus) and Queen of Heaven. When her husband heard a prophecy that he would be deposed by one of his children, he took to swallowing each of them as soon as they were born. But Rhea bore her youngest, Zeus, in secret and hid him away in a cave in Krete (Crete) guarded by shield-clashing Kouretes (Curetes). In his stead she presented Kronos with a stone wrapped in swaddling clothes which he promptly devoured.
@@ -271,7 +271,7 @@ Rhea was closely identified with the Anatolian mother-goddess Kybele (Cybele). T
                 new GreekDeity
                 {
                     Name = "Tethys",
-                    ImageUrl = "https://www.theoi.com/image/Z35.5BTethys.jpg",
+                    ImageUrl = "https://2.bp.blogspot.com/-a-M3x7xIKPw/W6uOFm8y2DI/AAAAAAAABKM/2v1Y4fvdqEUw09y-hWgFgn3dGVuwD9-SACK4BGAYYCw/s1600/6f8c5b46d6e5d332e4a31cf6d4ca5130--yemaya-orisha-greek-mythology.jpg",
                     Description = @"TETHYS was the Titan goddess of the primal font of fresh water which nourishes the earth. She was the wife of Okeanos (Oceanus), the earth-encircling, fresh-water stream, and the mother of the Potamoi (Rivers), the Okeanides (Oceanids) (nymphs of springs, streams and fountains), and the Nephelai (Clouds). Tethys, daughter of Gaia (Earth), fed her children's springs with the waters of Okeanos drawn through subterranean acquifers. Her name was derived from the Greek word têthê meaning ""nurse"" or ""grandmother"".
 
 In Greek vase painting Tethys appears as an unremarkable woman accompanied by Eileithyia, goddess of childbirth, and her fish-tailed husband Okeanos. In mosaic art she was depicted with a small pair of wings on her brow which probably signified her role of mother of rain-couds.
@@ -284,7 +284,7 @@ Tethys was perhaps identified with the Titanis Eurynome, one-time Queen of Heave
                 new GreekDeity
                 {
                     Name = "Themis",
-                    ImageUrl = "https://www.theoi.com/image/T8.1BThemis.jpg",
+                    ImageUrl = "https://i.pinimg.com/originals/9b/64/73/9b6473c2dca7de83fa0a629f727f4b60.jpg",
                     Description = @"THEMIS was the Titan goddess of divine law and order--the traditional rules of conduct first established by the gods. She was also a prophetic goddess who presided over the most ancient oracles, including Delphoi (Delphi). In this role, she was the divine voice (themistes) who first instructed mankind in the primal laws of justice and morality, such as the precepts of piety, the rules of hospitality, good governance, conduct of assembly, and pious offerings to the gods. In Greek, the word themis referred to divine law, those rules of conduct long established by custom. Unlike the word nomos, the term was not usually used to describe laws of human decree.
 
 Themis was an early bride of Zeus and his first counsellor. She was often represented seated beside his throne advising him on the precepts of divine law and the rules of fate.
